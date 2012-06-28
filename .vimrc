@@ -34,7 +34,7 @@ set softtabstop=4
 set expandtab
 set autoindent
 
-"Easier moving in tabs and windows
+"Easier moving in windows
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
@@ -43,7 +43,6 @@ map <C-Up> <C-W>k
 map <C-Down> <C-W>j
 map <C-Left> <C-W>h
 map <C-Right> <C-W>l
-
 
 "key mappings for saving file
 nmap <C-s> :w<CR>
