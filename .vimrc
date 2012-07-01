@@ -11,7 +11,10 @@ set backspace=indent,eol,start
 " Change mapleader
 let mapleader=","
 
-silent! nmap <silent> <Leader>p :NERDTreeToggle<CR>
+silent! nmap <silent> <Leader>, :NERDTreeToggle<CR>
+
+
+nnoremap <silent> <F3> :set hlsearch!<CR>
 
 "key mapping for Gundo
 nnoremap <F4> :GundoToggle<CR>
@@ -19,12 +22,23 @@ nnoremap <F4> :GundoToggle<CR>
 "color scheme
 set t_Co=256
 syntax on
+filetype on
+filetype plugin on
+filetype plugin indent on
 set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
+set noerrorbells " No error bells please
+
+set incsearch " Incremental search
+set hlsearch
+
+" Enable mouse support in console
+set mouse=a
+
 "line numbers
-nmap <f2> :aset number! number?<cr>
+nmap <f2> :set number! number?<cr>
 set number
 
 "indent settings
@@ -33,6 +47,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set autoindent
+set smarttab
+
 
 "Easier moving in windows
 map <C-J> <C-W>j
@@ -43,6 +59,14 @@ map <C-Up> <C-W>k
 map <C-Down> <C-W>j
 map <C-Left> <C-W>h
 map <C-Right> <C-W>l
+
+" Up and down are more logical with g..
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+nnoremap <silent> <Up> gk
+nnoremap <silent> <Down> gj
+inoremap <silent> <Up> <Esc>gka
+inoremap <silent> <Down> <Esc>gja
 
 "key mappings for saving file
 nmap <C-s> :w<CR>
@@ -56,3 +80,12 @@ set wildmode=list:longest,full  " command <Tab> completion, list matches, then l
 
 "; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
 noremap ; :
+
+" This shows what you are typing as a command.
+set showcmd
+
+" Automatically cd into the directory that the file is in
+ autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+
+ " Remove any trailing whitespace that is in the file
+ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
