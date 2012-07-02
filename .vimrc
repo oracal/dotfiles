@@ -1,19 +1,23 @@
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-"Use Vim settings, rather then Vi settings (much better!).
+"Use Vim settings, rather then Vi settings
 "This must be first, because it changes other options as a side effect.
 set nocompatible
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Change mapleader
+"Change mapleader
 let mapleader=","
 
-silent! nmap <silent> <Leader>, :NERDTreeToggle<CR>
+"nerd tree binding
+nmap <silent> <Leader>, :NERDTreeToggle<CR>
 
+"ctrlp binding
+nmap <silent> <Leader>. :CtrlPMixed<CR>
 
+"remove highlighting for search
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
 "key mapping for Gundo
@@ -29,12 +33,12 @@ set background=dark
 colorscheme solarized
 call togglebg#map("<F5>")
 
-set noerrorbells " No error bells please
+set noerrorbells "No error bells
 
-set incsearch " Incremental search
-set hlsearch
+set incsearch "Incremental search
+set hlsearch "Highlight search results in file
 
-" Enable mouse support in console
+"Enable mouse support in console
 set mouse=a
 
 "line numbers
@@ -60,7 +64,7 @@ map <C-Down> <C-W>j
 map <C-Left> <C-W>h
 map <C-Right> <C-W>l
 
-" Up and down are more logical with g..
+"Up and down are more logical with g..
 nnoremap <silent> k gk
 nnoremap <silent> j gj
 nnoremap <silent> <Up> gk
@@ -73,19 +77,19 @@ nmap <C-s> :w<CR>
 vmap <C-s> <C-C>:w<CR>
 imap <C-s> <C-O>:w<CR>
 
-set ignorecase                  " case insensitive search
-set smartcase                   " case sensitive when uc present
-set wildmenu                    " show list instead of just completing
-set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+set ignorecase                  "case insensitive search
+set smartcase                   "case sensitive when uc present
+set wildmenu                    "show list instead of just completing
+set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
 
 "; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
 noremap ; :
 
-" This shows what you are typing as a command.
+"This shows what you are typing as a command.
 set showcmd
 
-" Automatically cd into the directory that the file is in
- autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+"Automatically cd into the directory that the file is in
+autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
- " Remove any trailing whitespace that is in the file
- autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+"Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
