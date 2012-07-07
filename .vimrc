@@ -38,11 +38,21 @@ set noerrorbells "No error bells
 set incsearch "Incremental search
 set hlsearch "Highlight search results in file
 
-"Enable mouse support in console
+"Enable mouse support in console and set toggle button
 set mouse=a
+nnoremap <F12> :call ToggleMouse()<CR>
+function! ToggleMouse()
+    if &mouse == 'a'
+        set mouse=
+        echo "Mouse usage disabled"
+    else
+        set mouse=a
+        echo "Mouse usage enabled"
+    endif
+endfunction
 
 "line numbers
-nmap <f2> :set number! number?<cr>
+nnoremap <f2> :set number!<cr>
 set number
 
 "indent settings
