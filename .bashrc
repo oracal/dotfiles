@@ -4,7 +4,7 @@ if [ -f /etc/skel/.bashrc ]; then
 fi
 
 # load generic bash commands
-if [ -f ~/.bashr_generic ]; then
+if [ -f ~/.bash_generic ]; then
     . ~/.bash_generic
 fi
 
