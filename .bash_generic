@@ -13,8 +13,3 @@ gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --typ
 
 # disable default ctrl+s
 stty stop undef
-
-# load custom file for any non generic commands
-if [ -f ~/.bash_custom ]; then
-    . ~/.bash_custom
-fi

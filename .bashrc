@@ -8,3 +8,8 @@ if [ -f ~/.bash_generic ]; then
     . ~/.bash_generic
 fi
 
+# load custom file for any non generic commands
+if [ -f ~/.bashrc_custom ]; then
+    . ~/.bashrc_custom
+fi
+
