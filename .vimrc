@@ -34,6 +34,20 @@ colorscheme solarized
 call togglebg#map("<F5>")
 
 set noerrorbells "No error bells
+set novisualbell
+set t_vb=
+set tm=500
+
+"Don't redraw while executing macros (good performance config)
+set lazyredraw
+
+"Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+"Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
 set incsearch "Incremental search
 set hlsearch "Highlight search results in file
@@ -63,7 +77,6 @@ set expandtab
 set autoindent
 set smarttab
 
-
 "Easier moving in windows
 map <C-J> <C-W>j
 map <C-K> <C-W>k
@@ -75,8 +88,8 @@ map <C-Left> <C-W>h
 map <C-Right> <C-W>l
 
 "Up and down are more logical with g..
-nnoremap <silent> k gk
-nnoremap <silent> j gj
+"nnoremap <silent> k gk
+"nnoremap <silent> j gj
 nnoremap <silent> <Up> gk
 nnoremap <silent> <Down> gj
 inoremap <silent> <Up> <Esc>gka
@@ -86,6 +99,8 @@ inoremap <silent> <Down> <Esc>gja
 nmap <C-s> :w<CR>
 vmap <C-s> <C-C>:w<CR>
 imap <C-s> <C-O>:w<CR>
+
+inoremap jj <Esc>
 
 set ignorecase                  "case insensitive search
 set smartcase                   "case sensitive when uc present
@@ -103,3 +118,33 @@ autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 "Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+"Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ exe "normal! g`\"" |
+    \ endif
+
+"Alt and j/k to move lines in all modes (xterm)
+nnoremap <silent> j :m+<CR>==
+nnoremap <silent> k :m-2<CR>==
+inoremap <silent> j <Esc>:m+<CR>==gi
+inoremap <silent> k <Esc>:m-2<CR>==gi
+vnoremap <silent> j :m'>+<CR>gv=gv
+vnoremap <silent> k :m-2<CR>gv=gv
+
+"Alt and j/k to move lines in all modes (others)
+nnoremap <silent> <A-j> :m+<CR>==
+nnoremap <silent> <A-k> :m-2<CR>==
+inoremap <silent> <A-j> <Esc>:m+<CR>==gi
+inoremap <silent> <A-k> <Esc>:m-2<CR>==gi
+vnoremap <silent> <A-j> :m'>+<CR>gv=gv
+vnoremap <silent> <A-k> :m-2<CR>gv=gv
+
+"Alt and up/down to move lines in all modes
+nnoremap <silent> <A-Down> :m+<CR>==
+nnoremap <silent> <A-Up> :m-2<CR>==
+inoremap <silent> <A-Down> <Esc>:m+<CR>==gi
+inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
+vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
+vnoremap <silent> <A-Up> :m-2<CR>gv=gv
