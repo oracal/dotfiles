@@ -66,7 +66,7 @@ function! ToggleMouse()
 endfunction
 
 "line numbers
-nnoremap <f2> :set number!<cr>
+nnoremap <silent> <f2> :set number!<cr>
 set number
 
 "indent settings
@@ -88,8 +88,8 @@ map <C-Left> <C-W>h
 map <C-Right> <C-W>l
 
 "Up and down are more logical with g..
-"nnoremap <silent> k gk
-"nnoremap <silent> j gj
+nnoremap <silent> k gk
+nnoremap <silent> j gj
 nnoremap <silent> <Up> gk
 nnoremap <silent> <Down> gj
 inoremap <silent> <Up> <Esc>gka
@@ -148,3 +148,36 @@ inoremap <silent> <A-Down> <Esc>:m+<CR>==gi
 inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
 vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
 vnoremap <silent> <A-Up> :m-2<CR>gv=gv
+
+"save file using sudo
+nnoremap w :w !sudo tee % <cr>
+nnoremap <A-w> :w !sudo tee % <cr>
+
+"rainbow parentheses settings
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"rainbow parentheses binding
+inoremap <silent> <F1> <Esc>:RainbowParenthesesToggle<cr>a
+noremap <silent> <F1> :RainbowParenthesesToggle<cr>
+
+"rainbow parentheses colors
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['red',         'firebrick3'],
+    \ ]
