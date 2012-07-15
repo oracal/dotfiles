@@ -181,3 +181,37 @@ let g:rbpt_colorpairs = [
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['red',         'firebrick3'],
     \ ]
+
+"Tagbar binding
+nmap <silent> <Leader>m :TagbarToggle<CR>
+
+"ctag bindings and settings
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+set tags+=./tags;/
+set tags+=~/.tags
+
+"AutoTags
+source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
+
+"Paste Toggle
+set pastetoggle=<F6>
+
+"space bind
+nnoremap <C-space> i
+imap <C-space> <Esc>`^
+
+nnoremap <c-@> i
+imap <c-@> <Esc>`^
+
+"different bacground in insert mode
+"au InsertEnter * :call ToggleBackground()
+"au InsertLeave * :call ToggleBackground()
+"function! ToggleBackground()
+"    if &background == 'dark'
+"        set background=light
+"    else
+"        set background=dark
+"    endif
+"endfunction
+
