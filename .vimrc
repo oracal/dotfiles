@@ -78,14 +78,23 @@ set autoindent
 set smarttab
 
 "Easier moving in windows
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-L> <C-W>l
-map <C-H> <C-W>h
-map <C-Up> <C-W>k
-map <C-Down> <C-W>j
-map <C-Left> <C-W>h
-map <C-Right> <C-W>l
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+nnoremap <C-Up> <C-W>k
+nnoremap <C-Down> <C-W>j
+nnoremap <C-Left> <C-W>h
+nnoremap <C-Right> <C-W>l
+
+inoremap <C-J> <C-O><C-W>j
+inoremap <C-K> <C-O><C-W>k
+inoremap <C-L> <C-O><C-W>l
+inoremap <C-H> <C-O><C-W>h
+inoremap <C-Up> <C-O><C-W>k
+inoremap <C-Down> <C-O><C-W>j
+inoremap <C-Left> <C-O><C-W>h
+inoremap <C-Right> <C-O><C-W>l
 
 "Up and down are more logical with g..
 nnoremap <silent> k gk
