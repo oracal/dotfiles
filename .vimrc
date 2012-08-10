@@ -213,6 +213,9 @@ imap <C-space> <Esc>`^
 nnoremap <c-@> i
 imap <c-@> <Esc>`^
 
+noremap <silent> o :put =''<CR>
+noremap <silent> O :put! =''<CR>
+
 "different bacground in insert mode
 "au InsertEnter * :call ToggleBackground()
 "au InsertLeave * :call ToggleBackground()
