@@ -1,0 +1,3 @@
+term xterm
+vbell off # turn off visual bell
+defscrollback 5000
