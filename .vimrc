@@ -19,7 +19,7 @@ nmap <silent> <Leader>. :CtrlPMixed<CR>
 
 "remove highlighting for search
 nnoremap <F3> :set hlsearch!<CR>
-inoremap <F3> <esc>:set hlsearch!<CR>a
+inoremap <F3> <C-O>:set hlsearch!<CR>
 
 "key mapping for Gundo
 nnoremap <silent> <F4> :GundoToggle<CR>
@@ -57,7 +57,7 @@ set hlsearch "Highlight search results in file
 "Enable mouse support in console and set toggle button
 set mouse=a
 nnoremap <F12> :call ToggleMouse()<CR>
-inoremap <F12> <esc>:call ToggleMouse()<CR>a
+inoremap <F12> <C-O>:call ToggleMouse()<CR>
 function! ToggleMouse()
     if &mouse == 'a'
         set mouse=
@@ -70,7 +70,7 @@ endfunction
 
 "line numbers
 nnoremap <silent> <f2> :set number!<cr>
-inoremap <silent> <f2> <esc>:set number!<cr>a
+inoremap <silent> <f2> <C-O>:set number!<cr>
 set number
 
 "indent settings
@@ -200,7 +200,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 "rainbow parentheses binding
-inoremap <silent> <F1> <Esc>:RainbowParenthesesToggle<cr>a
+inoremap <silent> <F1> <C-O>:RainbowParenthesesToggle<cr>
 nnoremap <silent> <F1> :RainbowParenthesesToggle<cr>
 
 "rainbow parentheses colors
@@ -261,3 +261,8 @@ noremap <silent> O :put! =''<CR>
 
 "disable automatic commenting on new line (not sure why that is a thing)
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" after yanking in visual mode I want to be at the end of the selection, not the beginning
+function! YRRunAfterMaps()
+    vmap y ygv<Esc>
+endfunction
