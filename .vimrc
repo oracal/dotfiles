@@ -18,10 +18,12 @@ nmap <silent> <Leader>, :NERDTreeToggle<CR>
 nmap <silent> <Leader>. :CtrlPMixed<CR>
 
 "remove highlighting for search
-nnoremap <silent> <F3> :set hlsearch!<CR>
+nnoremap <F3> :set hlsearch!<CR>
+inoremap <F3> <esc>:set hlsearch!<CR>a
 
 "key mapping for Gundo
-nnoremap <F4> :GundoToggle<CR>
+nnoremap <silent> <F4> :GundoToggle<CR>
+inoremap <silent> <F4> <esc>:GundoToggle<CR>
 
 "color scheme
 set t_Co=256
@@ -44,7 +46,7 @@ set lazyredraw
 "Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-"Turn backup off, since most stuff is in SVN, git et.c anyway...
+"Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -55,6 +57,7 @@ set hlsearch "Highlight search results in file
 "Enable mouse support in console and set toggle button
 set mouse=a
 nnoremap <F12> :call ToggleMouse()<CR>
+inoremap <F12> <esc>:call ToggleMouse()<CR>a
 function! ToggleMouse()
     if &mouse == 'a'
         set mouse=
@@ -67,6 +70,7 @@ endfunction
 
 "line numbers
 nnoremap <silent> <f2> :set number!<cr>
+inoremap <silent> <f2> <esc>:set number!<cr>a
 set number
 
 "indent settings
@@ -86,6 +90,26 @@ nnoremap <C-Up> <C-W>k
 nnoremap <C-Down> <C-W>j
 nnoremap <C-Left> <C-W>h
 nnoremap <C-Right> <C-W>l
+
+"Deal with putty
+nnoremap [A <C-W>k
+nnoremap [B <C-W>j
+nnoremap [D <C-W>h
+nnoremap [C <C-W>l
+inoremap [A <C-O><C-W>k
+inoremap [B <C-O><C-W>j
+inoremap [D <C-O><C-W>h
+inoremap [C <C-O><C-W>l
+
+"Deal with putty and tmux
+nnoremap [1;5A <C-W>k
+nnoremap [1;5B <C-W>j
+nnoremap [1;5D <C-W>h
+nnoremap [1;5C <C-W>l
+inoremap [1;5A <C-O><C-W>k
+inoremap [1;5B <C-O><C-W>j
+inoremap [1;5D <C-O><C-W>h
+inoremap [1;5C <C-O><C-W>l
 
 inoremap <C-J> <C-O><C-W>j
 inoremap <C-K> <C-O><C-W>k
@@ -117,7 +141,7 @@ set wildmenu                    "show list instead of just completing
 set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
 
 "; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
-noremap ; :
+nnoremap ; :
 
 "This shows what you are typing as a command.
 set showcmd
@@ -158,6 +182,14 @@ inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
 vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
 vnoremap <silent> <A-Up> :m-2<CR>gv=gv
 
+"Alt and up/down to move lines in all modes
+nnoremap <silent> [1;3B :m+<CR>==
+nnoremap <silent> [1;3A :m-2<CR>==
+inoremap <silent> [1;3B <Esc>:m+<CR>==gi
+inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
+vnoremap <silent> [1;3B :m'>+<CR>gv=gv
+vnoremap <silent> [1;3A :m-2<CR>gv=gv
+
 "save file using sudo
 nnoremap w :w !sudo tee % <cr>
 nnoremap <A-w> :w !sudo tee % <cr>
@@ -169,7 +201,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 "rainbow parentheses binding
 inoremap <silent> <F1> <Esc>:RainbowParenthesesToggle<cr>a
-noremap <silent> <F1> :RainbowParenthesesToggle<cr>
+nnoremap <silent> <F1> :RainbowParenthesesToggle<cr>
 
 "rainbow parentheses colors
 let g:rbpt_colorpairs = [
@@ -227,3 +259,5 @@ noremap <silent> O :put! =''<CR>
 "    endif
 "endfunction
 
+"disable automatic commenting on new line (not sure why that is a thing)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
