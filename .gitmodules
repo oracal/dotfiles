@@ -52,3 +52,6 @@
 [submodule ".vim/external/craigemery-dotFiles"]
 	path = .vim/external/craigemery-dotFiles
 	url = https://github.com/craigemery/dotFiles.git
+[submodule ".vim/bundle/vim-easytags"]
+	path = .vim/bundle/vim-easytags
+	url = https://github.com/xolox/vim-easytags.git
