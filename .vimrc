@@ -230,10 +230,9 @@ nmap <silent> <Leader>m :TagbarToggle<CR>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set tags+=./tags;/
-set tags+=~/.tags
 
-"AutoTags
-source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
+" AutoTags (atm I prefer easytags)
+" source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
 "Paste Toggle
 set pastetoggle=<F6>
@@ -248,7 +247,7 @@ imap <c-@> <Esc>`^
 noremap <silent> o :put =''<CR>
 noremap <silent> O :put! =''<CR>
 
-"different bacground in insert mode
+"different background in insert mode
 "au InsertEnter * :call ToggleBackground()
 "au InsertLeave * :call ToggleBackground()
 "function! ToggleBackground()
@@ -262,7 +261,16 @@ noremap <silent> O :put! =''<CR>
 "disable automatic commenting on new line (not sure why that is a thing)
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" after yanking in visual mode I want to be at the end of the selection, not the beginning
+" after yanking in visual mode I want to be where I was previously (seems quite slow)
+" function! YRRunAfterMaps()
+"     vmap y ygv<Esc>
+" endfunction
+
+" after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
 function! YRRunAfterMaps()
-    vmap y ygv<Esc>
+   vmap y y'>
 endfunction
+
+" Easytags settings
+:let g:easytags_file = '~/tags'
+:let g:easytags_dynamic_files = 1
