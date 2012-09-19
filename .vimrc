@@ -274,3 +274,77 @@ endfunction
 " Easytags settings
 :let g:easytags_file = '~/tags'
 :let g:easytags_dynamic_files = 1
+
+" set the shift arrows to change the size of vim windows
+nnoremap <silent> [1;2A :call Resize('+')<cr>
+nnoremap <silent> [1;2B :call Resize('-')<cr>
+nnoremap <silent> [1;2D :call Resize('<')<cr>
+nnoremap <silent> [1;2C :call Resize('>')<cr>
+
+inoremap <silent> [1;2A <c-o>:call Resize('+')<cr>
+inoremap <silent> [1;2B <c-o>:call Resize('-')<cr>
+inoremap <silent> [1;2D <c-o>:call Resize('<')<cr>
+inoremap <silent> [1;2C <c-o>:call Resize('>')<cr>
+
+" function to resize vim windows with arrows taking into account window position
+function! Resize(dir)
+    let rightest = 0
+    let leftest = 0
+    let top = 0
+    let bottom = 0
+    let down1 = 0
+    let down2 = 0
+    let right1 = 0
+    let right2 = 0
+    let this = winnr()
+    if '+' == a:dir || '-' == a:dir
+        execute "normal \<c-w>k"
+        let up = winnr()
+        exe this . "wincmd w"
+        execute "normal \<c-w>j"
+        let down1 = winnr()
+        execute "normal \<c-w>j"
+        let down2 = winnr()
+        exe this . "wincmd w"
+        if up == this
+            let top = 1
+        endif
+        if down1 == this
+            let bottom = 1
+        endif
+    elseif '>' == a:dir || '<' == a:dir
+        execute "normal \<c-w>h"
+        let left = winnr()
+        exe this . "wincmd w"
+        execute "normal \<c-w>l"
+        let right1 = winnr()
+        execute "normal \<c-w>l"
+        let right2 = winnr()
+        exe this . "wincmd w"
+        if left == this
+            let leftest = 1
+        endif
+        if right1 == this
+            let rightest = 1
+        endif
+    endif
+
+    if ('+' == a:dir && bottom == 1) || ('-' == a:dir && top == 1)
+        execute "normal \<c-w>+"
+    endif
+    if ('-' == a:dir && bottom == 1) || ('+' == a:dir && top == 1)
+        execute "normal \<c-w>-"
+    endif
+    if ('<' == a:dir && leftest == 1) || ('>' == a:dir && rightest == 1)
+        execute "normal \<c-w><"
+    endif
+    if ('>' == a:dir && leftest == 1) || ('<' == a:dir && rightest == 1)
+        execute "normal \<c-w>>"
+    endif
+    if (('<' == a:dir || '>' == a:dir) && leftest == 0 && rightest == 0 && right1 != right2)
+        execute "normal \<c-w>" . a:dir
+    endif
+    if (('+' == a:dir || '-' == a:dir) && bottom == 0 && top == 0 && down1 != down2)
+        execute "normal \<c-w>" . a:dir
+    endif
+endfunction
