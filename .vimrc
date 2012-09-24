@@ -44,7 +44,7 @@ set tm=500
 set lazyredraw
 
 "Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
+set encoding=utf-8
 
 "Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
@@ -144,7 +144,7 @@ set wildmode=list:longest,full  "command <Tab> completion, list matches, then lo
 nnoremap ; :
 
 "This shows what you are typing as a command.
-set showcmd
+" set showcmd
 
 "Automatically cd into the directory that the file is in
 autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
@@ -341,10 +341,35 @@ function! Resize(dir)
     if ('>' == a:dir && leftest == 1) || ('<' == a:dir && rightest == 1)
         execute "normal \<c-w>>"
     endif
-    if (('<' == a:dir || '>' == a:dir) && leftest == 0 && rightest == 0 && right1 != right2)
-        execute "normal \<c-w>" . a:dir
+    if (('<' == a:dir || '>' == a:dir) && leftest == 0 && rightest == 0)
+        if (right1 == right2)
+            if ('<' == a:dir)
+                execute "normal \<c-w>l\<c-w>>"
+            else
+                execute "normal \<c-w>l\<c-w><"
+            endif
+            exe this . "wincmd w"
+        else
+            execute "normal \<c-w>" . a:dir
+        endif
     endif
-    if (('+' == a:dir || '-' == a:dir) && bottom == 0 && top == 0 && down1 != down2)
-        execute "normal \<c-w>" . a:dir
+    if (('+' == a:dir || '-' == a:dir) && bottom == 0 && top == 0)
+        execute "normal \<c-w>j\<c-w>" . a:dir
+        exe this . "wincmd w"
     endif
 endfunction
+
+
+" Powerline configuration
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_theme = 'oracal'
+let g:Powerline_colorscheme = 'oracal'
+
+" Syntastic configuration
+let g:syntastic_enable_balloons = 0
+
+" edit solarized slightly for less harsh colors
+set fillchars+=vert:\│
+hi VertSplit ctermbg=8 ctermfg=11
+hi SignColumn ctermbg=8 ctermfg=11

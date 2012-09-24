@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/vim-easytags"]
 	path = .vim/bundle/vim-easytags
 	url = https://github.com/xolox/vim-easytags.git
+[submodule ".vim/bundle/vim-powerline"]
+	path = .vim/bundle/vim-powerline
+	url = https://github.com/oracal/vim-powerline.git
