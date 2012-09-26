@@ -373,3 +373,5 @@ let g:syntastic_enable_balloons = 0
 set fillchars+=vert:\│
 hi VertSplit ctermbg=8 ctermfg=11
 hi SignColumn ctermbg=8 ctermfg=11
+hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
+hi StatusLine ctermbg=0 ctermfg=0
