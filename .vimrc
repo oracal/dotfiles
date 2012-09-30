@@ -272,8 +272,10 @@ function! YRRunAfterMaps()
 endfunction
 
 " Easytags settings
-:let g:easytags_file = '~/tags'
-:let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/tags'
+let g:easytags_dynamic_files = 1
+let g:easytags_always_enabled = 0
+let g:easytags_on_cursorhold = 0
 
 " set the shift arrows to change the size of vim windows
 nnoremap <silent> [1;2A :call Resize('+')<cr>
@@ -375,3 +377,5 @@ hi VertSplit ctermbg=8 ctermfg=11
 hi SignColumn ctermbg=8 ctermfg=11
 hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
 hi StatusLine ctermbg=0 ctermfg=0
+
+let g:slime_target = "tmux"
