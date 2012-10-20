@@ -274,9 +274,13 @@ endfunction
 
 " Easytags settings
 let g:easytags_file = '~/tags'
+" searches up directory tree for tags file, need to creaete project specific tag files to stop tag files getting too big
 let g:easytags_dynamic_files = 1
-let g:easytags_always_enabled = 0
-let g:easytags_on_cursorhold = 0
+" creates a tags file in the current directory
+nmap <F8> :UpdateTags -R -f tags<CR>
+let g:easytags_always_enabled = 1
+let g:easytags_on_cursorhold = 1
+let g:easytags_auto_highlight = 1
 
 " set the shift arrows to change the size of vim windows
 nnoremap <silent> [1;2A :call Resize('+')<cr>
