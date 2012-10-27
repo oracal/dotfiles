@@ -229,6 +229,7 @@ nmap <silent> <Leader>m :TagbarToggle<CR>
 "ctag bindings and settings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map ] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 set tags+=./tags;/
 
 " AutoTags (atm I prefer easytags)
