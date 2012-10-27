@@ -262,14 +262,16 @@ noremap <silent> O :put! =''<CR>
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " after yanking in visual mode I want to be where I was previously (seems quite slow)
-" function! YRRunAfterMaps()
-"     vmap y ygv<Esc>
-" endfunction
+function! YRRunAfterMaps()
+    vmap y ygv<Esc>
+    map p gp
+    map P gP
+endfunction
 
 " after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
-function! YRRunAfterMaps()
-   vmap y y'>
-endfunction
+" function! YRRunAfterMaps()
+"    vmap y y'>
+" endfunction
 
 " Easytags settings
 let g:easytags_file = '~/tags'
@@ -383,3 +385,5 @@ hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
 hi StatusLine ctermbg=0 ctermfg=0
 
 let g:slime_target = "tmux"
+
+nnoremap <silent> <F7> :YRShow<CR>
