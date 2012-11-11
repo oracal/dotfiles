@@ -1,31 +1,10 @@
+" ---- plugin management ----
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-"Use Vim settings, rather then Vi settings
-"This must be first, because it changes other options as a side effect.
-set nocompatible
+" ---- vim settings ----
 
-"allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-"Change mapleader
-let mapleader=","
-
-"nerd tree binding
-nmap <silent> <Leader>, :NERDTreeToggle<CR>
-
-"ctrlp binding
-nmap <silent> <Leader>. :CtrlPMixed<CR>
-
-"remove highlighting for search
-nnoremap <F3> :set hlsearch!<CR>
-inoremap <F3> <C-O>:set hlsearch!<CR>
-
-"key mapping for Gundo
-nnoremap <silent> <F4> :GundoToggle<CR>
-inoremap <silent> <F4> <esc>:GundoToggle<CR>
-
-"color scheme
+" color scheme
 set t_Co=256
 syntax on
 filetype on
@@ -33,20 +12,19 @@ filetype plugin on
 filetype plugin indent on
 set background=dark
 colorscheme solarized
-call togglebg#map("<F5>")
 
 set noerrorbells "No error bells
 set novisualbell
 set t_vb=
 set tm=500
 
-"Don't redraw while executing macros (good performance config)
+" Don't redraw while executing macros (good performance config)
 set lazyredraw
 
-"Set utf8 as standard encoding and en_US as the standard language
+" Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
 
-"Turn backup off, since most stuff is in SVN, git etc. anyway...
+" Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
 set nowb
 set noswapfile
@@ -54,26 +32,7 @@ set noswapfile
 set incsearch "Incremental search
 set hlsearch "Highlight search results in file
 
-"Enable mouse support in console and set toggle button
-set mouse=a
-nnoremap <F12> :call ToggleMouse()<CR>
-inoremap <F12> <C-O>:call ToggleMouse()<CR>
-function! ToggleMouse()
-    if &mouse == 'a'
-        set mouse=
-        echo "Mouse usage disabled"
-    else
-        set mouse=a
-        echo "Mouse usage enabled"
-    endif
-endfunction
-
-"line numbers
-nnoremap <silent> <f2> :set number!<cr>
-inoremap <silent> <f2> <C-O>:set number!<cr>
-set number
-
-"indent settings
+" indent settings
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -81,129 +40,38 @@ set expandtab
 set autoindent
 set smarttab
 
-"Easier moving in windows
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
-nnoremap <C-Up> <C-W>k
-nnoremap <C-Down> <C-W>j
-nnoremap <C-Left> <C-W>h
-nnoremap <C-Right> <C-W>l
+" Use Vim settings, rather then Vi settings
+" This must be first, because it changes other options as a side effect.
+set nocompatible
 
-"Deal with putty
-nnoremap [A <C-W>k
-nnoremap [B <C-W>j
-nnoremap [D <C-W>h
-nnoremap [C <C-W>l
-inoremap [A <C-O><C-W>k
-inoremap [B <C-O><C-W>j
-inoremap [D <C-O><C-W>h
-inoremap [C <C-O><C-W>l
-
-"Deal with putty and tmux
-nnoremap [1;5A <C-W>k
-nnoremap [1;5B <C-W>j
-nnoremap [1;5D <C-W>h
-nnoremap [1;5C <C-W>l
-inoremap [1;5A <C-O><C-W>k
-inoremap [1;5B <C-O><C-W>j
-inoremap [1;5D <C-O><C-W>h
-inoremap [1;5C <C-O><C-W>l
-
-inoremap <C-J> <C-O><C-W>j
-inoremap <C-K> <C-O><C-W>k
-inoremap <C-L> <C-O><C-W>l
-inoremap <C-H> <C-O><C-W>h
-inoremap <C-Up> <C-O><C-W>k
-inoremap <C-Down> <C-O><C-W>j
-inoremap <C-Left> <C-O><C-W>h
-inoremap <C-Right> <C-O><C-W>l
-
-"Up and down are more logical with g..
-nnoremap <silent> k gk
-nnoremap <silent> j gj
-nnoremap <silent> <Up> gk
-nnoremap <silent> <Down> gj
-inoremap <silent> <Up> <Esc>gka
-inoremap <silent> <Down> <Esc>gja
-
-"key mappings for saving file
-nmap <C-s> :w<CR>
-vmap <C-s> <C-C>:w<CR>
-imap <C-s> <C-O>:w<CR>
-
-inoremap jj <Esc>
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 set ignorecase                  "case insensitive search
 set smartcase                   "case sensitive when uc present
 set wildmenu                    "show list instead of just completing
 set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
 
-"; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
-nnoremap ; :
+" This shows what you are typing as a command.
+set showcmd
 
-"This shows what you are typing as a command.
-" set showcmd
+set tags+=./tags;/
 
-"Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+" edit solarized slightly for less harsh colors
+set fillchars+=vert:\│
+hi VertSplit ctermbg=8 ctermfg=11
+hi SignColumn ctermbg=8 ctermfg=11
+hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
+hi StatusLine ctermbg=0 ctermfg=0
 
-"Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+" ---- plugin settings ----
 
-"Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \ exe "normal! g`\"" |
-    \ endif
-
-"Alt and j/k to move lines in all modes (xterm)
-nnoremap <silent> j :m+<CR>==
-nnoremap <silent> k :m-2<CR>==
-inoremap <silent> j <Esc>:m+<CR>==gi
-inoremap <silent> k <Esc>:m-2<CR>==gi
-vnoremap <silent> j :m'>+<CR>gv=gv
-vnoremap <silent> k :m-2<CR>gv=gv
-
-"Alt and j/k to move lines in all modes (others)
-nnoremap <silent> <A-j> :m+<CR>==
-nnoremap <silent> <A-k> :m-2<CR>==
-inoremap <silent> <A-j> <Esc>:m+<CR>==gi
-inoremap <silent> <A-k> <Esc>:m-2<CR>==gi
-vnoremap <silent> <A-j> :m'>+<CR>gv=gv
-vnoremap <silent> <A-k> :m-2<CR>gv=gv
-
-"Alt and up/down to move lines in all modes
-nnoremap <silent> <A-Down> :m+<CR>==
-nnoremap <silent> <A-Up> :m-2<CR>==
-inoremap <silent> <A-Down> <Esc>:m+<CR>==gi
-inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
-vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
-vnoremap <silent> <A-Up> :m-2<CR>gv=gv
-
-"Alt and up/down to move lines in all modes
-nnoremap <silent> [1;3B :m+<CR>==
-nnoremap <silent> [1;3A :m-2<CR>==
-inoremap <silent> [1;3B <Esc>:m+<CR>==gi
-inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
-vnoremap <silent> [1;3B :m'>+<CR>gv=gv
-vnoremap <silent> [1;3A :m-2<CR>gv=gv
-
-"save file using sudo
-nnoremap w :w !sudo tee % <cr>
-nnoremap <A-w> :w !sudo tee % <cr>
-
-"rainbow parentheses settings
+" rainbow parentheses settings
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-"rainbow parentheses binding
-inoremap <silent> <F1> <C-O>:RainbowParenthesesToggle<cr>
-nnoremap <silent> <F1> :RainbowParenthesesToggle<cr>
-
-"rainbow parentheses colors
+" rainbow parentheses colors
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
@@ -223,22 +91,32 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
-"Tagbar binding
-nmap <silent> <Leader>m :TagbarToggle<CR>
+" Powerline configuration
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_theme = 'oracal'
+let g:Powerline_colorscheme = 'oracal'
 
-"ctag bindings and settings
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-map ] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-set tags+=./tags;/
+" Syntastic configuration
+let g:syntastic_enable_balloons = 0
 
-" AutoTags (atm I prefer easytags)
-" source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
+let g:slime_target = "tmux"
 
-"Paste Toggle
-set pastetoggle=<F6>
+nmap a <Plug>SpeedDatingUp
+nmap x <Plug>SpeedDatingDown
+xmap a <Plug>SpeedDatingUp
+xmap x <Plug>SpeedDatingDown
+nmap da <Plug>SpeedDatingNowUTC
+nmap dx <Plug>SpeedDatingNowLocal
 
-"space bind
+nmap <A-a> <Plug>SpeedDatingUp
+nmap <A-x> <Plug>SpeedDatingDown
+xmap <A-a> <Plug>SpeedDatingUp
+xmap <A-x> <Plug>SpeedDatingDown
+nmap <A-d><A-a> <Plug>SpeedDatingNowUTC
+nmap <A-d><A-x> <Plug>SpeedDatingNowLocal
+
+" space bind
 nnoremap <C-space> i
 imap <C-space> <Esc>`^
 
@@ -248,41 +126,104 @@ imap <c-@> <Esc>`^
 noremap <silent> o :put =''<CR>
 noremap <silent> O :put! =''<CR>
 
-"different background in insert mode
-"au InsertEnter * :call ToggleBackground()
-"au InsertLeave * :call ToggleBackground()
-"function! ToggleBackground()
-"    if &background == 'dark'
-"        set background=light
-"    else
-"        set background=dark
-"    endif
-"endfunction
+" AutoTags
+let g:autotagmaxTagsFileSize = 200*1024*1024
+source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
-"disable automatic commenting on new line (not sure why that is a thing)
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" ---- leader mappings ----
 
-" after yanking in visual mode I want to be where I was previously (seems quite slow)
-function! YRRunAfterMaps()
-    vmap y ygv<Esc>
-    map p gp
-    map P gP
+" Change mapleader
+let mapleader=","
+
+let g:EasyMotion_leader_key = '<leader><leader>'
+
+" nerd tree binding
+nnoremap <silent> <leader>n :NERDTreeToggle<CR>
+
+" ctrlp binding
+nnoremap <silent> <Leader>p :CtrlPMixed<CR>
+
+" key mapping for Gundo
+nnoremap <silent> <leader>g :GundoToggle<CR>
+
+" Tagbar binding
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+" Yankring mapping
+nnoremap <silent> <leader>y :YRShow<CR>
+
+" ---- function key mappings ----
+
+" rainbow parentheses binding
+inoremap <silent> <F1> <C-O>:RainbowParenthesesToggle<cr>
+nnoremap <silent> <F1> :RainbowParenthesesToggle<cr>
+
+" line numbers
+nnoremap <silent> <F2> :set number!<cr>
+inoremap <silent> <F2> <C-O>:set number!<cr>
+set number
+
+" remove highlighting for search
+nnoremap <F3> :set hlsearch!<CR>
+inoremap <F3> <C-O>:set hlsearch!<CR>
+
+" Paste Toggle
+set pastetoggle=<F6>
+
+" Enable mouse support in console and set toggle button
+set mouse=a
+nnoremap <F12> :call ToggleMouse()<CR>
+inoremap <F12> <C-O>:call ToggleMouse()<CR>
+function! ToggleMouse()
+    if &mouse == 'a'
+        set mouse=
+        echo "Mouse usage disabled"
+    else
+        set mouse=a
+        echo "Mouse usage enabled"
+    endif
 endfunction
 
-" after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
-" function! YRRunAfterMaps()
-"    vmap y y'>
-" endfunction
+" ---- window mappings ----
 
-" Easytags settings
-let g:easytags_file = '~/tags'
-" searches up directory tree for tags file, need to creaete project specific tag files to stop tag files getting too big
-let g:easytags_dynamic_files = 1
-" creates a tags file in the current directory
-nmap <F8> :UpdateTags -R -f tags<CR>
-let g:easytags_always_enabled = 1
-let g:easytags_on_cursorhold = 1
-let g:easytags_auto_highlight = 1
+" Easier moving in windows
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+nnoremap <C-Up> <C-W>k
+nnoremap <C-Down> <C-W>j
+nnoremap <C-Left> <C-W>h
+nnoremap <C-Right> <C-W>l
+
+" Deal with putty
+nnoremap [A <C-W>k
+nnoremap [B <C-W>j
+nnoremap [D <C-W>h
+nnoremap [C <C-W>l
+inoremap [A <C-O><C-W>k
+inoremap [B <C-O><C-W>j
+inoremap [D <C-O><C-W>h
+inoremap [C <C-O><C-W>l
+
+" Deal with putty and tmux
+nnoremap [1;5A <C-W>k
+nnoremap [1;5B <C-W>j
+nnoremap [1;5D <C-W>h
+nnoremap [1;5C <C-W>l
+inoremap [1;5A <C-O><C-W>k
+inoremap [1;5B <C-O><C-W>j
+inoremap [1;5D <C-O><C-W>h
+inoremap [1;5C <C-O><C-W>l
+
+inoremap <C-J> <C-O><C-W>j
+inoremap <C-K> <C-O><C-W>k
+inoremap <C-L> <C-O><C-W>l
+inoremap <C-H> <C-O><C-W>h
+inoremap <C-Up> <C-O><C-W>k
+inoremap <C-Down> <C-O><C-W>j
+inoremap <C-Left> <C-O><C-W>h
+inoremap <C-Right> <C-O><C-W>l
 
 " set the shift arrows to change the size of vim windows
 nnoremap <silent> [1;2A :call Resize('+')<cr>
@@ -368,23 +309,92 @@ function! Resize(dir)
     endif
 endfunction
 
+" ---- other mappings ----
 
-" Powerline configuration
-set laststatus=2
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'oracal'
-let g:Powerline_colorscheme = 'oracal'
+" Up and down are more logical with g..
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+nnoremap <silent> <Up> gk
+nnoremap <silent> <Down> gj
+inoremap <silent> <Up> <Esc>gka
+inoremap <silent> <Down> <Esc>gja
 
-" Syntastic configuration
-let g:syntastic_enable_balloons = 0
+" key mappings for saving file
+nmap <C-s> :w<CR>
+vmap <C-s> <C-C>:w<CR>
+imap <C-s> <C-O>:w<CR>
 
-" edit solarized slightly for less harsh colors
-set fillchars+=vert:\│
-hi VertSplit ctermbg=8 ctermfg=11
-hi SignColumn ctermbg=8 ctermfg=11
-hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
-hi StatusLine ctermbg=0 ctermfg=0
+inoremap jj <Esc>
 
-let g:slime_target = "tmux"
+" ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
+nnoremap ; :
+nnoremap q; q:
 
-nnoremap <silent> <F7> :YRShow<CR>
+" Alt and j/k to move lines in all modes (xterm)
+nnoremap <silent> j :m+<CR>==
+nnoremap <silent> k :m-2<CR>==
+inoremap <silent> j <Esc>:m+<CR>==gi
+inoremap <silent> k <Esc>:m-2<CR>==gi
+vnoremap <silent> j :m'>+<CR>gv=gv
+vnoremap <silent> k :m-2<CR>gv=gv
+
+" Alt and j/k to move lines in all modes (others)
+nnoremap <silent> <A-j> :m+<CR>==
+nnoremap <silent> <A-k> :m-2<CR>==
+inoremap <silent> <A-j> <Esc>:m+<CR>==gi
+inoremap <silent> <A-k> <Esc>:m-2<CR>==gi
+vnoremap <silent> <A-j> :m'>+<CR>gv=gv
+vnoremap <silent> <A-k> :m-2<CR>gv=gv
+
+" Alt and up/down to move lines in all modes
+nnoremap <silent> <A-Down> :m+<CR>==
+nnoremap <silent> <A-Up> :m-2<CR>==
+inoremap <silent> <A-Down> <Esc>:m+<CR>==gi
+inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
+vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
+vnoremap <silent> <A-Up> :m-2<CR>gv=gv
+
+" Alt and up/down to move lines in all modes
+nnoremap <silent> [1;3B :m+<CR>==
+nnoremap <silent> [1;3A :m-2<CR>==
+inoremap <silent> [1;3B <Esc>:m+<CR>==gi
+inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
+vnoremap <silent> [1;3B :m'>+<CR>gv=gv
+vnoremap <silent> [1;3A :m-2<CR>gv=gv
+
+" save file using sudo
+nnoremap <C-w> :w !sudo tee % >/dev/null<CR>
+
+" ctag mappings
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map ] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" after yanking in visual mode I want to be where I was previously (seems quite slow)
+function! YRRunAfterMaps()
+    vmap y ygv<Esc>
+    map p gp
+    map P gP
+endfunction
+
+" after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
+" function! YRRunAfterMaps()
+"    vmap y y'>
+" endfunction
+
+" ---- auto commands ----
+
+" Automatically cd into the directory that the file is in
+autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ exe "normal! g`\"" |
+    \ endif
+
+" disable automatic commenting on new line (not sure why that is a thing)
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
