@@ -64,6 +64,14 @@ hi SignColumn ctermbg=8 ctermfg=11
 hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
 hi StatusLine ctermbg=0 ctermfg=0
 
+if v:version >= 703
+    "undo settings
+    set undodir=~/.vim/undofiles
+    set undofile
+
+    set colorcolumn=+1 "mark the ideal max text width
+endif
+
 " ---- plugin settings ----
 
 " rainbow parentheses settings
@@ -129,6 +137,8 @@ noremap <silent> O :put! =''<CR>
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
 source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
+
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snipmate"]
 
 " ---- leader mappings ----
 

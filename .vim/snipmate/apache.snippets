@@ -1,0 +1,68 @@
+snippet dir "dir"
+<Directory ${1:/}>
+	DirectoryIndex ${2:index.html}
+	Order Deny,Allow
+	Deny from All
+</Directory>
+endsnippet
+
+<Directory ${1:/}>
+	DirectoryIndex ${2:index.html}
+	Order Deny,Allow
+	Deny from All
+</Directory>
+endsnippet
+
+snippet filesmatch "filesmatch"
+<FilesMatch "${1:regex}">
+	${2}
+</FilesMatch>
+endsnippet
+
+<FilesMatch "${1:regex}">
+	${2}
+</FilesMatch>
+endsnippet
+
+snippet ifmodule "ifmodule"
+<IfModule ${1:mod_example.c}>
+	${2}
+</IfModule>
+endsnippet
+
+<IfModule ${1:mod_example.c}>
+	${2}
+</IfModule>
+endsnippet
+
+snippet limitexcept "limitexcept"
+<LimitExcept ${1:POST GET}>
+	${2}
+</LimitExcept>
+endsnippet
+
+<LimitExcept ${1:POST GET}>
+	${2}
+</LimitExcept>
+endsnippet
+
+snippet proxy "proxy"
+<Proxy ${1:*}>
+	${2}
+</Proxy>
+endsnippet
+
+<Proxy ${1:*}>
+	${2}
+</Proxy>
+endsnippet
+
+snippet virtualhost "virtualhost"
+<VirtualHost ${1:*}:${2:80}>
+	ServerAdmin ${3:webmaster@example.com}
+	DocumentRoot ${4:/www/example.com}
+	ServerName ${5:www.example.com}
+</VirtualHost>
+endsnippet
+
+

@@ -1,0 +1,200 @@
+snippet #! "#!"
+#!/usr/bin/env tclsh
+endsnippet
+
+#!/usr/bin/env tclsh
+endsnippet
+
+snippet pro "pro"
+proc ${1:function_name} {${2:args}} {
+	${3:#body ...}
+}
+endsnippet
+
+proc ${1:function_name} {${2:args}} {
+	${3:#body ...}
+}
+endsnippet
+
+snippet xif "xif"
+${1:expr}? ${2:true} : ${3:false}
+endsnippet
+
+${1:expr}? ${2:true} : ${3:false}
+endsnippet
+
+snippet if "if"
+if {${1}} {
+	${2:# body...}
+}
+endsnippet
+
+if {${1}} {
+	${2:# body...}
+}
+endsnippet
+
+snippet ife "ife"
+if {${1}} {
+	${2:# body...}
+} else {
+	${3:# else...}
+}
+endsnippet
+
+if {${1}} {
+	${2:# body...}
+} else {
+	${3:# else...}
+}
+endsnippet
+
+snippet ifee "ifee"
+if {${1}} {
+	${2:# body...}
+} elseif {${3}} {
+	${4:# elsif...}
+} else {
+	${5:# else...}
+}
+endsnippet
+
+if {${1}} {
+	${2:# body...}
+} elseif {${3}} {
+	${4:# elsif...}
+} else {
+	${5:# else...}
+}
+endsnippet
+
+snippet ifc "ifc"
+if { [catch {${1:#do something...}} ${2:err}] } {
+	${3:# handle failure...}
+}
+endsnippet
+
+if { [catch {${1:#do something...}} ${2:err}] } {
+	${3:# handle failure...}
+}
+endsnippet
+
+snippet catch "catch"
+catch {${1}} ${2:err} ${3:options}
+endsnippet
+
+catch {${1}} ${2:err} ${3:options}
+endsnippet
+
+snippet wh "wh"
+while {${1}} {
+	${2:# body...}
+}
+endsnippet
+
+while {${1}} {
+	${2:# body...}
+}
+endsnippet
+
+snippet for "for"
+for {set ${2:var} 0} {$$2 < ${1:count}} {${3:incr} $2} {
+	${4:# body...}
+}
+endsnippet
+
+for {set ${2:var} 0} {$$2 < ${1:count}} {${3:incr} $2} {
+	${4:# body...}
+}
+endsnippet
+
+snippet fore "fore"
+foreach ${1:x} {${2:#list}} {
+	${3:# body...}
+}
+endsnippet
+
+foreach ${1:x} {${2:#list}} {
+	${3:# body...}
+}
+endsnippet
+
+snippet af "af"
+after ${1:ms} ${2:#do something}
+endsnippet
+
+after ${1:ms} ${2:#do something}
+endsnippet
+
+snippet afc "afc"
+after cancel ${1:id or script}
+endsnippet
+
+after cancel ${1:id or script}
+endsnippet
+
+snippet afi "afi"
+after idle ${1:script}
+endsnippet
+
+after idle ${1:script}
+endsnippet
+
+snippet afin "afin"
+after info ${1:id}
+endsnippet
+
+after info ${1:id}
+endsnippet
+
+snippet exp "exp"
+expr {${1:#expression here}}
+endsnippet
+
+expr {${1:#expression here}}
+endsnippet
+
+snippet sw "sw"
+switch ${1:var} {
+	${3:pattern 1} {
+		${4:#do something}
+	}
+	default {
+		${2:#do something}
+	}
+}
+endsnippet
+
+switch ${1:var} {
+	${3:pattern 1} {
+		${4:#do something}
+	}
+	default {
+		${2:#do something}
+	}
+}
+endsnippet
+
+snippet ca "ca"
+${1:pattern} {
+	${2:#do something}
+}${3}
+endsnippet
+
+${1:pattern} {
+	${2:#do something}
+}${3}
+endsnippet
+
+snippet ns "ns"
+namespace eval ${1:path} {${2:#script...}}
+endsnippet
+
+namespace eval ${1:path} {${2:#script...}}
+endsnippet
+
+snippet nsc "nsc"
+namespace current
+endsnippet
+
+

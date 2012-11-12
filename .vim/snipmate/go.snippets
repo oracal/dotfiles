@@ -1,0 +1,435 @@
+snippet ap "ap"
+append(${1:slice}, ${2:value})
+endsnippet
+
+append(${1:slice}, ${2:value})
+endsnippet
+
+snippet bl "bl"
+bool
+endsnippet
+
+bool
+endsnippet
+
+snippet bt "bt"
+byte
+endsnippet
+
+byte
+endsnippet
+
+snippet br "br"
+break
+endsnippet
+
+break
+endsnippet
+
+snippet ch "ch"
+chan ${1:int}
+endsnippet
+
+chan ${1:int}
+endsnippet
+
+snippet cs "cs"
+case ${1:value}:
+	${2:/* code */}
+endsnippet
+
+case ${1:value}:
+	${2:/* code */}
+endsnippet
+
+snippet c "c"
+const ${1:NAME} = ${2:0}
+endsnippet
+
+const ${1:NAME} = ${2:0}
+endsnippet
+
+snippet co "co"
+const (
+	${1:NAME1} = iota
+	${2:NAME2}
+)
+endsnippet
+
+const (
+	${1:NAME1} = iota
+	${2:NAME2}
+)
+endsnippet
+
+snippet cn "cn"
+continue
+endsnippet
+
+continue
+endsnippet
+
+snippet df "df"
+defer ${1:func}()
+endsnippet
+
+defer ${1:func}()
+endsnippet
+
+snippet dfr "dfr"
+defer func() {
+	if err := recover(); err != nil {
+		${1:/* code */}
+	}
+}()
+endsnippet
+
+defer func() {
+	if err := recover(); err != nil {
+		${1:/* code */}
+	}
+}()
+endsnippet
+
+snippet gpl "gpl"
+/*
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ * Copyright (C) ${1:Author}, `!v strftime("%Y")`
+ */
+${2}
+endsnippet
+
+/*
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ * Copyright (C) ${1:Author}, `!v strftime("%Y")`
+ */
+${2}
+endsnippet
+
+snippet i "i"
+int
+endsnippet
+
+int
+endsnippet
+
+snippet im "im"
+import (
+	"${1:package}" 
+)
+endsnippet
+
+import (
+	"${1:package}" 
+)
+endsnippet
+
+snippet in "in"
+interface{}
+endsnippet
+
+interface{}
+endsnippet
+
+snippet inf "inf"
+interface ${1:name} {
+	${2:/* methods */}
+}${3}
+endsnippet
+
+interface ${1:name} {
+	${2:/* methods */}
+}${3}
+endsnippet
+
+snippet if "if"
+if ${1:/* condition */} {
+	${2:/* code */}
+}
+endsnippet
+
+if ${1:/* condition */} {
+	${2:/* code */}
+}
+endsnippet
+
+snippet el "el"
+else {
+	${1}
+}
+endsnippet
+
+else {
+	${1}
+}
+endsnippet
+
+snippet ir "ir"
+if err != nil {
+	return err
+}
+${1}
+endsnippet
+
+if err != nil {
+	return err
+}
+${1}
+endsnippet
+
+snippet f "f"
+false
+endsnippet
+
+false
+endsnippet
+
+snippet ft "ft"
+fallthrough
+endsnippet
+
+fallthrough
+endsnippet
+
+snippet fl "fl"
+float32
+endsnippet
+
+float32
+endsnippet
+
+snippet f3 "f3"
+float32
+endsnippet
+
+float32
+endsnippet
+
+snippet f6 "f6"
+float64
+endsnippet
+
+float64
+endsnippet
+
+snippet ie "ie"
+if ${1:/* condition */} {
+	${2:/* code */}
+} else {
+	${3}
+}
+endsnippet
+
+if ${1:/* condition */} {
+	${2:/* code */}
+} else {
+	${3}
+}
+endsnippet
+
+snippet fo "fo"
+for ${2:i} = 0; $2 < ${1:count}; $2${3:++} {
+	${4:/* code */}
+}
+endsnippet
+
+for ${2:i} = 0; $2 < ${1:count}; $2${3:++} {
+	${4:/* code */}
+}
+endsnippet
+
+snippet fr "fr"
+for ${1:k}, ${2:v} := range ${3} {
+	${4:/* code */}
+}
+endsnippet
+
+for ${1:k}, ${2:v} := range ${3} {
+	${4:/* code */}
+}
+endsnippet
+
+snippet fun "fun"
+func ${1:funcName}(${2}) ${3:os.Error} {
+	${4:/* code */}
+}
+endsnippet
+
+func ${1:funcName}(${2}) ${3:os.Error} {
+	${4:/* code */}
+}
+endsnippet
+
+snippet fum "fum"
+func (self ${1:type}) ${2:funcName}(${3}) ${4:os.Error} {
+	${5:/* code */}
+}
+endsnippet
+
+func (self ${1:type}) ${2:funcName}(${3}) ${4:os.Error} {
+	${5:/* code */}
+}
+endsnippet
+
+snippet mk "mk"
+make(${1:[]string}, ${2:0})
+endsnippet
+
+make(${1:[]string}, ${2:0})
+endsnippet
+
+snippet mp "mp"
+map[${1:string}]${2:int}
+endsnippet
+
+map[${1:string}]${2:int}
+endsnippet
+
+snippet main "main"
+func main() {
+	${1:/* code */}
+}
+endsnippet
+
+func main() {
+	${1:/* code */}
+}
+endsnippet
+
+snippet nw "nw"
+new(${1:type})
+endsnippet
+
+new(${1:type})
+endsnippet
+
+snippet pn "pn"
+panic("${1:msg}")
+endsnippet
+
+panic("${1:msg}")
+endsnippet
+
+snippet pr "pr"
+fmt.Printf("${1:%s}\n", ${2:var})${3}
+endsnippet
+
+fmt.Printf("${1:%s}\n", ${2:var})${3}
+endsnippet
+
+snippet rn "rn"
+range ${1}
+endsnippet
+
+range ${1}
+endsnippet
+
+snippet rt "rt"
+return ${1}
+endsnippet
+
+return ${1}
+endsnippet
+
+snippet rs "rs"
+result
+endsnippet
+
+result
+endsnippet
+
+snippet sl "sl"
+select {
+case ${1:v1} := <-${2:chan1}
+	${3:/* code */}
+case ${4:v2} := <-${5:chan2}
+	${6:/* code */}
+default:
+	${7:/* code */}
+}
+endsnippet
+
+select {
+case ${1:v1} := <-${2:chan1}
+	${3:/* code */}
+case ${4:v2} := <-${5:chan2}
+	${6:/* code */}
+default:
+	${7:/* code */}
+}
+endsnippet
+
+snippet sr "sr"
+string
+endsnippet
+
+string
+endsnippet
+
+snippet st "st"
+struct ${1:name} {
+	${2:/* data */}
+}${4}
+endsnippet
+
+struct ${1:name} {
+	${2:/* data */}
+}${4}
+endsnippet
+
+snippet sw "sw"
+switch ${1:var} {
+case ${2:value1}:
+	${3:/* code */}
+case ${4:value2}:
+	${5:/* code */}
+default:
+	${6:/* code */}
+}
+endsnippet
+
+snippet sp "sp"
+fmt.Sprintf("${1:%s}", ${2:var})${3}
+endsnippet
+
+fmt.Sprintf("${1:%s}", ${2:var})${3}
+endsnippet
+
+snippet t "t"
+true
+endsnippet
+
+true
+endsnippet
+
+snippet v "v"
+var ${1:t} ${2:string}
+endsnippet
+
+
