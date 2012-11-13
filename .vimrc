@@ -1,4 +1,5 @@
 " ---- plugin management ----
+
 source ~/.vim/bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
@@ -55,6 +56,9 @@ set wildmode=list:longest,full  "command <Tab> completion, list matches, then lo
 " This shows what you are typing as a command.
 set showcmd
 
+"store lots of :cmdline history
+set history=1000
+
 set tags+=./tags;/
 
 " edit solarized slightly for less harsh colors
@@ -68,8 +72,6 @@ if v:version >= 703
     "undo settings
     set undodir=~/.vim/undofiles
     set undofile
-
-    set colorcolumn=+1 "mark the ideal max text width
 endif
 
 " ---- plugin settings ----
@@ -109,30 +111,6 @@ let g:Powerline_colorscheme = 'oracal'
 let g:syntastic_enable_balloons = 0
 
 let g:slime_target = "tmux"
-
-nmap a <Plug>SpeedDatingUp
-nmap x <Plug>SpeedDatingDown
-xmap a <Plug>SpeedDatingUp
-xmap x <Plug>SpeedDatingDown
-nmap da <Plug>SpeedDatingNowUTC
-nmap dx <Plug>SpeedDatingNowLocal
-
-nmap <A-a> <Plug>SpeedDatingUp
-nmap <A-x> <Plug>SpeedDatingDown
-xmap <A-a> <Plug>SpeedDatingUp
-xmap <A-x> <Plug>SpeedDatingDown
-nmap <A-d><A-a> <Plug>SpeedDatingNowUTC
-nmap <A-d><A-x> <Plug>SpeedDatingNowLocal
-
-" space bind
-nnoremap <C-space> i
-imap <C-space> <Esc>`^
-
-nnoremap <c-@> i
-imap <c-@> <Esc>`^
-
-noremap <silent> o :put =''<CR>
-noremap <silent> O :put! =''<CR>
 
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
@@ -391,6 +369,35 @@ endfunction
 " function! YRRunAfterMaps()
 "    vmap y y'>
 " endfunction
+
+" mappings for swapit and speeddating
+let g:speeddating_no_mappings = 1
+nnoremap <silent><c-q> :<c-u>call SwapWord(expand("<cword>"),'forward', 'no')<cr>
+noremap <silent><c-x> :<c-u>call SwapWord(expand("<cword>"),'backward','no')<cr>
+vnoremap <silent><c-q> "dy:call SwapWord(@d,'forward','yes')<cr>
+noremap <silent><c-x> "dy:call SwapWord(@d,'backward','yes')<cr>
+
+nmap d<C-q> <Plug>SpeedDatingNowUTC
+nmap d<C-x> <Plug>SpeedDatingNowLocal
+
+" swapit fallbacks to speeddating if no match
+nmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
+nmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
+vmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
+vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
+
+" ctrl - a is my multiplexing prefix
+map <C-a> <nop>
+
+" space bind
+nnoremap <C-space> i
+imap <C-space> <Esc>`^
+
+nnoremap <c-@> i
+imap <c-@> <Esc>`^
+
+noremap <silent> o :put =''<CR>
+noremap <silent> O :put! =''<CR>
 
 " ---- auto commands ----
 
