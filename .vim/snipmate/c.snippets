@@ -6,35 +6,7 @@ int main(int argc, const char *argv[])
 }
 endsnippet
 
-int main(int argc, const char *argv[])
-{
-	${1}
-	return 0;
-}
-endsnippet
-
 snippet mainn "mainn"
-int main(void)
-{
-	${1}
-	return 0;
-}
-endsnippet
-
-int main(void)
-{
-	${1}
-	return 0;
-}
-endsnippet
-
-int main(void)
-{
-	${1}
-	return 0;
-}
-endsnippet
-
 int main(void)
 {
 	${1}
@@ -46,13 +18,7 @@ snippet inc "inc"
 #include <${1:stdio}.h>${2}
 endsnippet
 
-#include <${1:stdio}.h>${2}
-endsnippet
-
 snippet Inc "Inc"
-#include "${1:`!v Filename("$1.h")`}"${2}
-endsnippet
-
 #include "${1:`!v Filename("$1.h")`}"${2}
 endsnippet
 
@@ -62,15 +28,7 @@ snippet ndef "ndef"
 #endif${3}
 endsnippet
 
-#ifndef $1
-#define ${1:SYMBOL} ${2:value}
-#endif${3}
-endsnippet
-
 snippet def "def"
-#define
-endsnippet
-
 #define
 endsnippet
 
@@ -80,17 +38,7 @@ snippet ifdef "ifdef"
 #endif${3}
 endsnippet
 
-#ifdef ${1:FOO}
-	${2:#define }
-#endif${3}
-endsnippet
-
 snippet #if "#if"
-#if ${1:FOO}
-	${2}
-#endif
-endsnippet
-
 #if ${1:FOO}
 	${2}
 #endif
@@ -103,30 +51,8 @@ ${2}
 #endif /* end of include guard: $1 */
 endsnippet
 
-#ifndef ${1:`!v toupper(Filename('$1_H', 'UNTITLED_H'))`}
-#define $1
-${2}
-#endif /* end of include guard: $1 */
-endsnippet
-
-#ifndef ${1:`!v toupper(Filename('$1_H', 'UNTITLED_H'))`}
-#define $1
-${2}
-#endif /* end of include guard: $1 */
-endsnippet
-
-#ifndef ${1:`!v toupper(Filename('$1_H', 'UNTITLED_H'))`}
-#define $1
-${2}
-#endif /* end of include guard: $1 */
-endsnippet
 
 snippet if "if"
-if (${1:/* condition */}) {
-	${2:/* code */}
-}${3}
-endsnippet
-
 if (${1:/* condition */}) {
 	${2:/* code */}
 }${3}
@@ -138,17 +64,7 @@ else {
 }${3}
 endsnippet
 
-else {
-	${1}
-}${3}
-endsnippet
-
 snippet elif "elif"
-else if (${1:/* condition */}) {
-	${2:/* code */}
-}${3}
-endsnippet
-
 else if (${1:/* condition */}) {
 	${2:/* code */}
 }${3}
@@ -158,19 +74,7 @@ snippet t "t"
 ${1:/* condition */} ? ${2:a} : ${3:b}
 endsnippet
 
-${1:/* condition */} ? ${2:a} : ${3:b}
-endsnippet
-
 snippet switch "switch"
-switch (${1:/* variable */}) {
-	case ${2:/* variable case */}:
-		${3}
-		${4:break;}${5}
-	default:
-		${6}
-}${7}
-endsnippet
-
 switch (${1:/* variable */}) {
 	case ${2:/* variable case */}:
 		${3}
@@ -188,29 +92,7 @@ switch (${1:/* variable */}) {
 }${6}
 endsnippet
 
-switch (${1:/* variable */}) {
-	case ${2:/* variable case */}:
-		${3}
-		${4:break;}${5}
-}${6}
-endsnippet
-
 snippet case "case"
-case ${1:/* variable case */}:
-	${2}
-	${3:break;}${4}
-endsnippet
-
-case ${1:/* variable case */}:
-	${2}
-	${3:break;}${4}
-endsnippet
-
-case ${1:/* variable case */}:
-	${2}
-	${3:break;}${4}
-endsnippet
-
 case ${1:/* variable case */}:
 	${2}
 	${3:break;}${4}
@@ -222,17 +104,7 @@ for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
 }${5}
 endsnippet
 
-for (${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
-	${4:/* code */}
-}${5}
-endsnippet
-
 snippet forr "forr"
-for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
-	${5:/* code */}
-}${6}
-endsnippet
-
 for (${1:i} = ${2:0}; ${3:$1 < 10}; $1${4:++}) {
 	${5:/* code */}
 }${6}
@@ -244,27 +116,7 @@ while (${1:/* condition */}) {
 }${3}
 endsnippet
 
-while (${1:/* condition */}) {
-	${2:/* code */}
-}${3}
-endsnippet
-
 snippet do "do"
-do {
-	${2:/* code */}
-} while (${1:/* condition */});${3}
-endsnippet
-
-do {
-	${2:/* code */}
-} while (${1:/* condition */});${3}
-endsnippet
-
-do {
-	${2:/* code */}
-} while (${1:/* condition */});${3}
-endsnippet
-
 do {
 	${2:/* code */}
 } while (${1:/* condition */});${3}
@@ -277,22 +129,7 @@ ${1:void} ${2:function_name}(${3})
 }${5}
 endsnippet
 
-${1:void} ${2:function_name}(${3})
-{
-	${4:/* code */}
-}${5}
-endsnippet
-
 snippet fund "fund"
-${1:void} ${2:function_name}(${3});${4}
-endsnippet
-
-${1:void} ${2:function_name}(${3});${4}
-endsnippet
-
-${1:void} ${2:function_name}(${3});${4}
-endsnippet
-
 ${1:void} ${2:function_name}(${3});${4}
 endsnippet
 
@@ -300,15 +137,7 @@ snippet td "td"
 typedef ${1:int} ${2:MyCustomType};${3}
 endsnippet
 
-typedef ${1:int} ${2:MyCustomType};${3}
-endsnippet
-
 snippet st "st"
-struct ${1:`!v Filename('$1_t', 'name')`} {
-	${2:/* data */}
-}${3: /* optional variable list */};${4}
-endsnippet
-
 struct ${1:`!v Filename('$1_t', 'name')`} {
 	${2:/* data */}
 }${3: /* optional variable list */};${4}
@@ -320,27 +149,7 @@ typedef struct ${2:_$1 }{
 } ${1:`!v Filename('$1_t', 'name')`};${4}
 endsnippet
 
-typedef struct ${2:_$1 }{
-	${3:/* data */}
-} ${1:`!v Filename('$1_t', 'name')`};${4}
-endsnippet
-
 snippet tde "tde"
-typedef enum {
-	${1:/* data */}
-} ${2:foo};${3}
-endsnippet
-
-typedef enum {
-	${1:/* data */}
-} ${2:foo};${3}
-endsnippet
-
-typedef enum {
-	${1:/* data */}
-} ${2:foo};${3}
-endsnippet
-
 typedef enum {
 	${1:/* data */}
 } ${2:foo};${3}
@@ -350,26 +159,11 @@ snippet pr "pr"
 printf("${1:%s}\n"${2});${3}
 endsnippet
 
-printf("${1:%s}\n"${2});${3}
-endsnippet
-
 snippet fpr "fpr"
 fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
 endsnippet
 
-fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
-endsnippet
-
-fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
-endsnippet
-
-fprintf(${1:stderr}, "${2:%s}\n"${3});${4}
-endsnippet
-
 snippet . "."
-[${1}]${2}
-endsnippet
-
 [${1}]${2}
 endsnippet
 

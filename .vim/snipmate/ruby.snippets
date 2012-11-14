@@ -2,14 +2,7 @@ snippet enc "enc"
 # encoding: utf-8
 endsnippet
 
-# encoding: utf-8
-endsnippet
-
 snippet #! "#!"
-#!/usr/bin/env ruby
-# encoding: utf-8
-endsnippet
-
 #!/usr/bin/env ruby
 # encoding: utf-8
 endsnippet
@@ -156,11 +149,6 @@ class << ${1:self}
 end
 endsnippet
 
-class << ${1:self}
-	${2}
-end
-endsnippet
-
 snippet cla- "cla-"
 class ${1:`!v substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`} < DelegateClass(${2:ParentClass})
 	def initialize(${3:args})
@@ -197,30 +185,11 @@ module ${1:`!v substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
 end
 endsnippet
 
-module ${1:`!v substitute(Filename(), '\(_\|^\)\(.\)', '\u\2', 'g')`}
-	module ClassMethods
-		${2}
-	end
-	module InstanceMethods
-	end
-	def self.included(receiver)
-		receiver.extend         ClassMethods
-		receiver.send :include, InstanceMethods
-	end
-end
-endsnippet
-
 snippet r "r"
 attr_reader :${1:attr_names}
 endsnippet
 
-attr_reader :${1:attr_names}
-endsnippet
-
 snippet w "w"
-attr_writer :${1:attr_names}
-endsnippet
-
 attr_writer :${1:attr_names}
 endsnippet
 
@@ -236,16 +205,7 @@ snippet ata "ata"
 attr_accessible :${1:attr_names}
 endsnippet
 
-attr_accessible :${1:attr_names}
-endsnippet
-
 snippet Enum "Enum"
-include Enumerable
-def each(&block)
-	${1}
-end
-endsnippet
-
 include Enumerable
 def each(&block)
 	${1}
@@ -259,25 +219,11 @@ def <=>(other)
 end
 endsnippet
 
-include Comparable
-def <=>(other)
-	${1}
-end
-endsnippet
-
 snippet Forw- "Forw-"
 extend Forwardable
 endsnippet
 
-extend Forwardable
-endsnippet
-
 snippet defs "defs"
-def self.${1:class_method_name}
-	${2}
-end
-endsnippet
-
 def self.${1:class_method_name}
 	${2}
 end
@@ -307,17 +253,7 @@ if __FILE__ == $PROGRAM_NAME
 end
 endsnippet
 
-if __FILE__ == $PROGRAM_NAME
-	${1}
-end
-endsnippet
-
 snippet usai "usai"
-if ARGV.${1}
-	abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
-end
-endsnippet
-
 if ARGV.${1}
 	abort "Usage: #{$PROGRAM_NAME} ${2:ARGS_GO_HERE}"${3}
 end
@@ -349,7 +285,7 @@ snippet Dir "Dir.global() { |file| .. }"
 Dir.glob(${1:"dir/glob/*"}) { |${2:file}| ${3} }
 endsnippet
 
-snippet Dir "Dir[".."]"
+snippet Dir "Dir[..]"
 Dir[${1:"glob/**/*.rb"}]${2}
 endsnippet
 
@@ -365,17 +301,11 @@ snippet fil "fil"
 fill(${1:range}) { |${2:i}| ${3} }
 endsnippet
 
-fill(${1:range}) { |${2:i}| ${3} }
-endsnippet
-
 snippet flao "flao"
 inject(Array.new) { |${1:arr}, ${2:a}| $1.push(*$2)}${3}
 endsnippet
 
 snippet zip "zip"
-zip(${1:enums}) { |${2:row}| ${3} }
-endsnippet
-
 zip(${1:enums}) { |${2:row}| ${3} }
 endsnippet
 
@@ -673,22 +603,11 @@ snippet ope "ope"
 open(${1:"path/or/url/or/pipe"}, "${2:w}") { |${3:io}| ${4} }
 endsnippet
 
-open(${1:"path/or/url/or/pipe"}, "${2:w}") { |${3:io}| ${4} }
-endsnippet
-
 snippet fpath "fpath"
 File.join(File.dirname(__FILE__), *%2[${1:rel path here}])${2}
 endsnippet
 
-File.join(File.dirname(__FILE__), *%2[${1:rel path here}])${2}
-endsnippet
-
 snippet unif "unif"
-ARGF.each_line${1} do |${2:line}|
-	${3}
-end
-endsnippet
-
 ARGF.each_line${1} do |${2:line}|
 	${3}
 end
@@ -828,9 +747,6 @@ snippet fl "fl"
 flunk "${1:Failure message.}"${2}
 endsnippet
 
-flunk "${1:Failure message.}"${2}
-endsnippet
-
 snippet bm- "bm-"
 TESTS = ${1:10_000}
 Benchmark.bmbm do |results|
@@ -842,20 +758,11 @@ snippet rep "rep"
 results.report("${1:name}:") { TESTS.times { ${2} }}
 endsnippet
 
-results.report("${1:name}:") { TESTS.times { ${2} }}
-endsnippet
-
 snippet Md "Md"
 File.open(${1:"path/to/file.dump"}, "wb") { |${2:file}| Marshal.dump(${3:obj}, $2) }${4}
 endsnippet
 
-File.open(${1:"path/to/file.dump"}, "wb") { |${2:file}| Marshal.dump(${3:obj}, $2) }${4}
-endsnippet
-
 snippet Ml "Ml"
-File.open(${1:"path/to/file.dump"}, "rb") { |${2:file}| Marshal.load($2) }${3}
-endsnippet
-
 File.open(${1:"path/to/file.dump"}, "rb") { |${2:file}| Marshal.load($2) }${3}
 endsnippet
 
@@ -871,13 +778,7 @@ snippet tra "tra"
 transaction(${1:true}) { ${2} }
 endsnippet
 
-transaction(${1:true}) { ${2} }
-endsnippet
-
 snippet xml- "xml-"
-REXML::Document.new(File.read(${1:"path/to/file"}))${2}
-endsnippet
-
 REXML::Document.new(File.read(${1:"path/to/file"}))${2}
 endsnippet
 
@@ -887,15 +788,7 @@ elements.each(${1:"//Xpath"}) do |${2:node}|
 end
 endsnippet
 
-elements.each(${1:"//Xpath"}) do |${2:node}|
-	${3}
-end
-endsnippet
-
 snippet clafn "clafn"
-split("::").inject(Object) { |par, const| par.const_get(const) }
-endsnippet
-
 split("::").inject(Object) { |par, const| par.const_get(const) }
 endsnippet
 
@@ -910,12 +803,6 @@ end
 endsnippet
 
 snippet tas "tas"
-desc "${1:Task description}"
-task :${2:task_name => [:dependent, :tasks]} do
-	${3}
-end
-endsnippet
-
 desc "${1:Task description}"
 task :${2:task_name => [:dependent, :tasks]} do
 	${3}
@@ -939,32 +826,11 @@ ensure
 end
 endsnippet
 
-begin
-	raise 'A test exception.'
-rescue Exception => e
-	puts e.message
-	puts e.backtrace.inspect
-else
-	# other exception
-ensure
-	# always executed
-end
-endsnippet
-
 snippet debug "debug"
 require 'ruby-debug'; debugger; true;
 endsnippet
 
 snippet pry "pry"
-require 'pry'; binding.pry
-endsnippet
-
-require 'pry'; binding.pry
-endsnippet
-
-require 'pry'; binding.pry
-endsnippet
-
 require 'pry'; binding.pry
 endsnippet
 
@@ -1489,11 +1355,6 @@ test "should ${1:do something}" do
 end
 endsnippet
 
-test "should ${1:do something}" do
-	${2}
-end
-endsnippet
-
 snippet mac "mac"
 add_column :${1:table_name}, :${2:column_name}, :${3:data_type}
 endsnippet
@@ -1540,9 +1401,6 @@ ${3}
 endsnippet
 
 snippet tref "tref"
-t.references :${1:model}
-endsnippet
-
 t.references :${1:model}
 endsnippet
 

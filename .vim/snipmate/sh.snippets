@@ -45,17 +45,8 @@ esac
 endsnippet
 
 snippet go "go"
-while getopts '${1:o}' ${2:opts} 
-do 
-	case $$2 in
-	${3:o0})
-		${4:#staments};;
-	esac
-done
-endsnippet
-
-while getopts '${1:o}' ${2:opts} 
-do 
+while getopts '${1:o}' ${2:opts}
+do
 	case $$2 in
 	${3:o0})
 		${4:#staments};;

@@ -5,18 +5,7 @@ function(${3:first_argument}) {
 };
 endsnippet
 
-${1:class_name}.prototype.${2:method_name} =
-function(${3:first_argument}) {
-	${4:// body...}
-};
-endsnippet
-
 snippet fun "fun"
-function ${1:function_name}(${2:argument}) {
-	${3:// body...}
-}
-endsnippet
-
 function ${1:function_name}(${2:argument}) {
 	${3:// body...}
 }
@@ -28,28 +17,13 @@ function(${1}) {
 }${2:;}
 endsnippet
 
-function(${1}) {
-	${3}
-}${2:;}
-endsnippet
-
 snippet (f "(f"
 (function(${1}) {
 	${3:/* code */}
 }(${2}));
 endsnippet
 
-(function(${1}) {
-	${3:/* code */}
-}(${2}));
-endsnippet
-
 snippet if "if"
-if (${1:true}) {
-	${2}
-}
-endsnippet
-
 if (${1:true}) {
 	${2}
 }
@@ -63,31 +37,11 @@ if (${1:true}) {
 }
 endsnippet
 
-if (${1:true}) {
-	${2}
-} else {
-	${3}
-}
-endsnippet
-
 snippet ter "ter"
 ${1:/* condition */} ? ${2:a} : ${3:b}
 endsnippet
 
-${1:/* condition */} ? ${2:a} : ${3:b}
-endsnippet
-
 snippet switch "switch"
-switch (${1:expression}) {
-	case '${3:case}':
-		${4:// code}
-		break;
-	${5}
-	default:
-		${2:// code}
-}
-endsnippet
-
 switch (${1:expression}) {
 	case '${3:case}':
 		${4:// code}
@@ -105,18 +59,7 @@ case '${1:case}':
 ${3}
 endsnippet
 
-case '${1:case}':
-	${2:// code}
-	break;
-${3}
-endsnippet
-
 snippet for "for"
-for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3: += 1}) {
-	${4:$1[$2]}
-}
-endsnippet
-
 for (var ${2:i} = 0; $2 < ${1:Things}.length; $2${3: += 1}) {
 	${4:$1[$2]}
 }
@@ -128,17 +71,7 @@ for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3: -= 1}) {
 }
 endsnippet
 
-for (var ${2:i} = ${1:Things}.length - 1; $2 >= 0; $2${3: -= 1}) {
-	${4:$1[$2]}
-}
-endsnippet
-
 snippet wh "wh"
-while (${1:/* condition */}) {
-	${2:/* code */}
-}
-endsnippet
-
 while (${1:/* condition */}) {
 	${2:/* code */}
 }
@@ -152,19 +85,7 @@ try {
 }
 endsnippet
 
-try {
-	${1:/* code */}
-} catch(${2:e}) {
-	${3:/* handle error */}
-}
-endsnippet
-
 snippet do "do"
-do {
-	${2:/* code */}
-} while (${1:/* condition */});
-endsnippet
-
 do {
 	${2:/* code */}
 } while (${1:/* condition */});
@@ -176,15 +97,7 @@ ${1:method_name}: function(${2:attribute}) {
 }${3:,}
 endsnippet
 
-${1:method_name}: function(${2:attribute}) {
-	${4}
-}${3:,}
-endsnippet
-
 snippet timeout "timeout"
-setTimeout(function() {${3}}${2}, ${1:10});
-endsnippet
-
 setTimeout(function() {${3}}${2}, ${1:10});
 endsnippet
 
@@ -192,13 +105,7 @@ snippet get "get"
 getElementsBy${1:TagName}('${2}')${3}
 endsnippet
 
-getElementsBy${1:TagName}('${2}')${3}
-endsnippet
-
 snippet gett "gett"
-getElementBy${1:Id}('${2}')${3}
-endsnippet
-
 getElementBy${1:Id}('${2}')${3}
 endsnippet
 
@@ -206,13 +113,7 @@ snippet cl "cl"
 console.log(${1});
 endsnippet
 
-console.log(${1});
-endsnippet
-
 snippet ret "ret"
-return ${1:result}
-endsnippet
-
 return ${1:result}
 endsnippet
 
@@ -222,15 +123,7 @@ for (var ${1:prop} in ${2:Things}) {
 }
 endsnippet
 
-for (var ${1:prop} in ${2:Things}) {
-	${3:$2[$1]}
-}
-endsnippet
-
 snippet has "has"
-hasOwnProperty(${1})
-endsnippet
-
 hasOwnProperty(${1})
 endsnippet
 
@@ -239,16 +132,9 @@ snippet /** "/**"
  * ${1:description}
  *
  */
-endsnippet
-
-snippet @par "@par"
+endsnippet @par "@par"
 @param {${1:type}} ${2:name} ${3:description}
-endsnippet
-
-snippet @ret "@ret"
-@return {${1:type}} ${2:description}
-endsnippet
-
+endsnippet @ret "@ret"
 @return {${1:type}} ${2:description}
 endsnippet
 
@@ -256,25 +142,11 @@ snippet jsonp "jsonp"
 JSON.parse(${1:jstr});
 endsnippet
 
-JSON.parse(${1:jstr});
-endsnippet
-
 snippet jsons "jsons"
 JSON.stringify(${1:object});
 endsnippet
 
-JSON.stringify(${1:object});
-endsnippet
-
 snippet sdf "sdf"
-var ${1:function_name} = function (${2:argument}) {
-	${3:// initial code ...}
-	$1 = function ($2) {
-		${4:// main code}
-	};
-}
-endsnippet
-
 var ${1:function_name} = function (${2:argument}) {
 	${3:// initial code ...}
 	$1 = function ($2) {

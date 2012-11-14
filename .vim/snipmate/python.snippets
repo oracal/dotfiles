@@ -10,9 +10,6 @@ snippet from "from"
 from ${1:package} import ${2:module}
 endsnippet
 
-from ${1:package} import ${2:module}
-endsnippet
-
 snippet docs "docs"
 '''
 File: ${1:`!v Filename('$1.py', 'foo.py')`}
@@ -22,10 +19,6 @@ Description: ${3}
 endsnippet
 
 snippet wh "wh"
-while ${1:condition}:
-	${2:# code...}
-endsnippet
-
 while ${1:condition}:
 	${2:# code...}
 endsnippet
@@ -42,19 +35,7 @@ with ${1:expr} as ${2:var}:
 	${3:# code...}
 endsnippet
 
-with ${1:expr} as ${2:var}:
-	${3:# code...}
-endsnippet
-
 snippet cl "cl"
-class ${1:ClassName}(${2:object}):
-	"""${3:docstring for $1}"""
-	def __init__(self, ${4:arg}):
-		${5:super($1, self).__init__()}
-		self.$4 = $4
-		${6}
-endsnippet
-
 class ${1:ClassName}(${2:object}):
 	"""${3:docstring for $1}"""
 	def __init__(self, ${4:arg}):
@@ -74,28 +55,12 @@ def ${1:fname}(${2:`!v indent('.') ? 'self' : ''`}):
 	${3}
 endsnippet
 
-def ${1:fname}(${2:`!v indent('.') ? 'self' : ''`}):
-	${3}
-endsnippet
-
 snippet defs "defs"
 def ${1:mname}(self, ${2:arg}):
 	${3:pass}
 endsnippet
 
-def ${1:mname}(self, ${2:arg}):
-	${3:pass}
-endsnippet
-
 snippet property "property"
-def ${1:foo}():
-	doc = "${2:The $1 property.}"
-	def fget(self):
-		${3:return self._$1}
-	def fset(self, value):
-		${4:self._$1 = value}
-endsnippet
-
 def ${1:foo}():
 	doc = "${2:The $1 property.}"
 	def fget(self):
@@ -119,15 +84,7 @@ elif ${1:condition}:
 	${2:code...}
 endsnippet
 
-elif ${1:condition}:
-	${2:code...}
-endsnippet
-
 snippet for "for"
-for ${1:item} in ${2:items}:
-	${3:code...}
-endsnippet
-
 for ${1:item} in ${2:items}:
 	${3:code...}
 endsnippet
@@ -141,9 +98,6 @@ snippet clatin1 "clatin1"
 endsnippet
 
 snippet cascii "cascii"
-# -*- coding: ascii -*-
-endsnippet
-
 # -*- coding: ascii -*-
 endsnippet
 
@@ -191,21 +145,7 @@ finally:
 	${6:pass}
 endsnippet
 
-try:
-	${1:pass}
-except ${2:Exception}, ${3:e}:
-	${4:raise $3}
-else:
-	${5:pass}
-finally:
-	${6:pass}
-endsnippet
-
 snippet ifmain "ifmain"
-if __name__ == '__main__':
-	${1:main()}
-endsnippet
-
 if __name__ == '__main__':
 	${1:main()}
 endsnippet
@@ -214,20 +154,11 @@ snippet _ "_"
 __${1:init}__${2}
 endsnippet
 
-__${1:init}__${2}
-endsnippet
-
 snippet pdb "pdb"
 import pdb; pdb.set_trace()
 endsnippet
 
-import pdb; pdb.set_trace()
-endsnippet
-
 snippet ipdb "ipdb"
-import ipdb; ipdb.set_trace()
-endsnippet
-
 import ipdb; ipdb.set_trace()
 endsnippet
 
@@ -245,16 +176,7 @@ ${1:doc}
 """
 endsnippet
 
-"""
-${1:doc}
-"""
-endsnippet
-
 snippet test "test"
-def test_${1:description}(${2:`!v indent('.') ? 'self' : ''`}):
-	${3:pass}
-endsnippet
-
 def test_${1:description}(${2:`!v indent('.') ? 'self' : ''`}):
 	${3:pass}
 endsnippet
@@ -268,5 +190,3 @@ endsnippet
 snippet fut "fut"
 from __future__ import ${1}
 endsnippet
-
-

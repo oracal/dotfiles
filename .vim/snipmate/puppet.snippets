@@ -27,7 +27,7 @@ endsnippet
 snippet if "if"
 if $${1:variable} {
 	${2}
-} 
+}
 endsnippet
 
 snippet else "else"
@@ -42,16 +42,6 @@ snippet ? "?"
   }
 endsnippet
 
-? {
-	'${1}'	=> ${2}
-  }
-endsnippet
-
-? {
-	'${1}'	=> ${2}
-  }
-endsnippet
-
 snippet [ "["
 [ ${1} ]${2}
 endsnippet
@@ -61,12 +51,6 @@ ${1}	=> ${2}
 endsnippet
 
 snippet p: "p:"
-"puppet://puppet/${1:module name}/${2:file name}"
-endsnippet
-
-"puppet://puppet/${1:module name}/${2:file name}"
-endsnippet
-
 "puppet://puppet/${1:module name}/${2:file name}"
 endsnippet
 
@@ -139,12 +123,6 @@ versioncmp("${1:version}", "${2:version}")${3}
 endsnippet
 
 snippet warning "warning"
-warning("${1:message}")${2}
-endsnippet
-
-warning("${1:message}")${2}
-endsnippet
-
 warning("${1:message}")${2}
 endsnippet
 

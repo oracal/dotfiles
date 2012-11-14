@@ -90,9 +90,6 @@ snippet xml "xml"
 ${1:FIELDNAME} = models.XMLField(schema_path=${2:None}${3:, blank=True})
 endsnippet
 
-${1:FIELDNAME} = models.XMLField(schema_path=${2:None}${3:, blank=True})
-endsnippet
-
 snippet fk "fk"
 ${1:FIELDNAME} = models.ForeignKey(${2:OtherModel}${3:, related_name=''}${4:, limit_choices_to=}${5:, to_field=''})
 endsnippet
@@ -102,9 +99,6 @@ ${1:FIELDNAME} = models.ManyToManyField(${2:OtherModel}${3:, related_name=''}${4
 endsnippet
 
 snippet o2o "o2o"
-${1:FIELDNAME} = models.OneToOneField(${2:OtherModel}${3:, parent_link=True}${4:, related_name=''}${5:, limit_choices_to=}${6:, to_field=''})
-endsnippet
-
 ${1:FIELDNAME} = models.OneToOneField(${2:OtherModel}${3:, parent_link=True}${4:, related_name=''}${5:, limit_choices_to=}${6:, to_field=''})
 endsnippet
 

@@ -19,17 +19,7 @@ snippet filesmatch "filesmatch"
 </FilesMatch>
 endsnippet
 
-<FilesMatch "${1:regex}">
-	${2}
-</FilesMatch>
-endsnippet
-
 snippet ifmodule "ifmodule"
-<IfModule ${1:mod_example.c}>
-	${2}
-</IfModule>
-endsnippet
-
 <IfModule ${1:mod_example.c}>
 	${2}
 </IfModule>
@@ -41,17 +31,7 @@ snippet limitexcept "limitexcept"
 </LimitExcept>
 endsnippet
 
-<LimitExcept ${1:POST GET}>
-	${2}
-</LimitExcept>
-endsnippet
-
 snippet proxy "proxy"
-<Proxy ${1:*}>
-	${2}
-</Proxy>
-endsnippet
-
 <Proxy ${1:*}>
 	${2}
 </Proxy>
