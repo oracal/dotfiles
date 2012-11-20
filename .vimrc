@@ -318,29 +318,13 @@ inoremap jj <Esc>
 nnoremap ; :
 nnoremap q; q:
 
-" Alt and j/k to move lines in all modes (xterm)
-nnoremap <silent> j :m+<CR>==
-nnoremap <silent> k :m-2<CR>==
-inoremap <silent> j <Esc>:m+<CR>==gi
-inoremap <silent> k <Esc>:m-2<CR>==gi
-vnoremap <silent> j :m'>+<CR>gv=gv
-vnoremap <silent> k :m-2<CR>gv=gv
-
 " Alt and j/k to move lines in all modes (others)
-nnoremap <silent> <A-j> :m+<CR>==
-nnoremap <silent> <A-k> :m-2<CR>==
-inoremap <silent> <A-j> <Esc>:m+<CR>==gi
-inoremap <silent> <A-k> <Esc>:m-2<CR>==gi
-vnoremap <silent> <A-j> :m'>+<CR>gv=gv
-vnoremap <silent> <A-k> :m-2<CR>gv=gv
-
-" Alt and up/down to move lines in all modes
-nnoremap <silent> <A-Down> :m+<CR>==
-nnoremap <silent> <A-Up> :m-2<CR>==
-inoremap <silent> <A-Down> <Esc>:m+<CR>==gi
-inoremap <silent> <A-Up> <Esc>:m-2<CR>==gi
-vnoremap <silent> <A-Down> :m'>+<CR>gv=gv
-vnoremap <silent> <A-Up> :m-2<CR>gv=gv
+nnoremap <silent> <leader>j :m+<CR>==
+nnoremap <silent> <leader>k :m-2<CR>==
+inoremap <silent> <leader>j <Esc>:m+<CR>==gi
+inoremap <silent> <leader>k <Esc>:m-2<CR>==gi
+vnoremap <silent> <leader>j :m'>+<CR>gv=gv
+vnoremap <silent> <leader>k :m-2<CR>gv=gv
 
 " Alt and up/down to move lines in all modes
 nnoremap <silent> [1;3B :m+<CR>==
@@ -355,8 +339,7 @@ nnoremap <C-w> :w !sudo tee % >/dev/null<CR>
 
 " ctag mappings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-map ] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " after yanking in visual mode I want to be where I was previously (seems quite slow)
 function! YRRunAfterMaps()
@@ -369,6 +352,21 @@ endfunction
 " function! YRRunAfterMaps()
 "    vmap y y'>
 " endfunction
+
+" ctrl - a is my multiplexing prefix
+map <C-a> <nop>
+
+" space bind
+nnoremap <C-space> i
+imap <C-space> <Esc>`^
+
+nnoremap <c-@> i
+imap <c-@> <Esc>`^
+
+noremap <silent> o :put =''<CR>
+noremap <silent> O :put! =''<CR>
+
+" ------ other plugin mappings ------
 
 " mappings for swapit and speeddating
 let g:speeddating_no_mappings = 1
@@ -385,19 +383,6 @@ nmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
 nmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 vmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
 vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
-
-" ctrl - a is my multiplexing prefix
-map <C-a> <nop>
-
-" space bind
-nnoremap <C-space> i
-imap <C-space> <Esc>`^
-
-nnoremap <c-@> i
-imap <c-@> <Esc>`^
-
-noremap <silent> o :put =''<CR>
-noremap <silent> O :put! =''<CR>
 
 " ---- auto commands ----
 
