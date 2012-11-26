@@ -111,6 +111,7 @@ let g:Powerline_colorscheme = 'oracal'
 let g:syntastic_enable_balloons = 0
 
 let g:slime_target = "tmux"
+let g:slime_paste_file = "~/.slime_paste"
 
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
@@ -139,6 +140,9 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " Yankring mapping
 nnoremap <silent> <leader>y :YRShow<CR>
+
+" save file using sudo
+nnoremap <leader>s :w !sudo tee % >/dev/null<CR>
 
 " ---- function key mappings ----
 
@@ -333,9 +337,6 @@ inoremap <silent> [1;3B <Esc>:m+<CR>==gi
 inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
 vnoremap <silent> [1;3B :m'>+<CR>gv=gv
 vnoremap <silent> [1;3A :m-2<CR>gv=gv
-
-" save file using sudo
-nnoremap <C-w> :w !sudo tee % >/dev/null<CR>
 
 " ctag mappings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>

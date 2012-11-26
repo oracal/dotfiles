@@ -1,11 +1,6 @@
 # load generic bash commands
-if [ -f /etc/skel/.bash_profile ]; then
-    . /etc/skel/.bash_profile
-fi
-
-# load generic bash commands
-if [ -f ~/.bash_generic ]; then
-    . ~/.bash_generic
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
 fi
 
 # load custom file for any non generic commands
