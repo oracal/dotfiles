@@ -119,6 +119,21 @@ source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snipmate"]
 
+" Jedi-vim
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#goto_command = "<leader>]"
+let g:jedi#related_names_command = "<leader>m"
+
+let g:SuperTabDefaultCompletionType = "context"
+
+" space bind
+nnoremap <C-space> i
+inoremap <C-space> <Esc>`^
+
+nnoremap <c-@> i
+inoremap <c-@> <Esc>`^
+
 " ---- leader mappings ----
 
 " Change mapleader
@@ -143,6 +158,15 @@ nnoremap <silent> <leader>y :YRShow<CR>
 
 " save file using sudo
 nnoremap <leader>s :w !sudo tee % >/dev/null<CR>
+
+" vimux
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vq :VimuxCloseRunner<CR>
+map <Leader>vx :VimuxClosePanes<CR>
+map <Leader>vs :VimuxInterruptRunner<CR>
+map <Leader>vc :VimuxClearRunnerHistory<CR>
 
 " ---- function key mappings ----
 
@@ -356,13 +380,6 @@ endfunction
 
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>
-
-" space bind
-nnoremap <C-space> i
-imap <C-space> <Esc>`^
-
-nnoremap <c-@> i
-imap <c-@> <Esc>`^
 
 noremap <silent> o :put =''<CR>
 noremap <silent> O :put! =''<CR>
