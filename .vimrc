@@ -335,6 +335,16 @@ nnoremap <silent> <Down> gj
 inoremap <silent> <Up> <Esc>gka
 inoremap <silent> <Down> <Esc>gja
 
+" disble arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
 " key mappings for saving file
 nmap <C-s> :w<CR>
 vmap <C-s> <C-C>:w<CR>
