@@ -356,7 +356,7 @@ inoremap jj <Esc>
 nnoremap ; :
 nnoremap q; q:
 
-" Alt and j/k to move lines in all modes (others)
+" leader and j/k to move lines in all modes (others)
 nnoremap <silent> <leader>j :m+<CR>==
 nnoremap <silent> <leader>k :m-2<CR>==
 inoremap <silent> <leader>j <Esc>:m+<CR>==gi
@@ -378,9 +378,9 @@ map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " after yanking in visual mode I want to be where I was previously (seems quite slow)
 function! YRRunAfterMaps()
-    vmap y ygv<Esc>
-    map p gp
-    map P gP
+    " vmap y ygv<Esc>
+    " map p gp
+    " map P gP
 endfunction
 
 " after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
@@ -391,8 +391,8 @@ endfunction
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>
 
-noremap <silent> o :put =''<CR>
-noremap <silent> O :put! =''<CR>
+" noremap <silent> o :put =''<CR>
+" noremap <silent> O :put! =''<CR>
 
 " ------ other plugin mappings ------
 
