@@ -41,6 +41,13 @@ set expandtab
 set autoindent
 set smarttab
 
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype jade setlocal ts=2 sts=2 sw=2
+autocmd Filetype jst setlocal ts=2 sts=2 sw=2
+
 " Use Vim settings, rather then Vi settings
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -119,13 +126,7 @@ source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snipmate"]
 
-" Jedi-vim
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_command = "<leader>]"
-let g:jedi#related_names_command = "<leader>m"
-
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 
 " space bind
 nnoremap <C-space> i
