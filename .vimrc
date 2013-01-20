@@ -360,8 +360,8 @@ vmap <C-s> <C-C>:w<CR>
 imap <C-s> <C-O>:w<CR>
 
 " Remap jj and jk to esc and set esc to nop
-inoremap jj <Esc>
-inoremap jk <Esc>
+inoremap jj <Esc>`^
+inoremap jk <Esc>`^
 inoremap <Esc> <nop>
 
 " ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
