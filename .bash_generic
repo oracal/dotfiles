@@ -17,11 +17,12 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$
 set -o vi
 
 # turn caps lock into an escape key, who the hell uses caps lock anyway?
-command -v xmodmap >/dev/null 2>&1 &&
-{
-    xmodmap -e "clear lock"
-    xmodmap -e "keycode 0x42 = Escape"
-}
+if [ $DISPLAY ]
+then
+    xmodmap -e 'keycode 66 = Control_L'
+    xmodmap -e 'clear Lock'
+    xmodmap -e 'add Control = Control_L'
+fi
 
 # getting colours to work correctly with gnome terminal
 command -v gconftool-2 >/dev/null 2>&1 &&
