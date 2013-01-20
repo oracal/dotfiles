@@ -81,6 +81,14 @@ if v:version >= 703
     set undofile
 endif
 
+set scrolloff=5
+
+nnoremap H H5k
+nnoremap L L5j
+
+vnoremap H H5k
+vnoremap L L5j
+
 " ---- plugin settings ----
 
 " rainbow parentheses settings
@@ -331,10 +339,10 @@ endfunction
 " Up and down are more logical with g..
 nnoremap <silent> k gk
 nnoremap <silent> j gj
-nnoremap <silent> <Up> gk
-nnoremap <silent> <Down> gj
-inoremap <silent> <Up> <Esc>gka
-inoremap <silent> <Down> <Esc>gja
+" nnoremap <silent> <Up> gk
+" nnoremap <silent> <Down> gj
+" inoremap <silent> <Up> <Esc>gka
+" inoremap <silent> <Down> <Esc>gja
 
 " disble arrow keys
 map <up> <nop>
@@ -351,7 +359,10 @@ nmap <C-s> :w<CR>
 vmap <C-s> <C-C>:w<CR>
 imap <C-s> <C-O>:w<CR>
 
+" Remap jj and jk to esc and set esc to nop
 inoremap jj <Esc>
+inoremap jk <Esc>
+inoremap <Esc> <nop>
 
 " ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
 nnoremap ; :
