@@ -426,8 +426,8 @@ vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 
 " ---- auto commands ----
 
-" Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+" " Automatically cd into the directory that the file is in
+autocmd BufEnter * silent! lcd %:p:h
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
