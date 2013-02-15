@@ -196,7 +196,7 @@ inoremap <F3> <C-O>:set hlsearch!<CR>
 set pastetoggle=<F6>
 
 " Enable mouse support in console and set toggle button
-set mouse=a
+set mouse=
 nnoremap <F12> :call ToggleMouse()<CR>
 inoremap <F12> <C-O>:call ToggleMouse()<CR>
 function! ToggleMouse()
@@ -368,14 +368,6 @@ inoremap <Esc> <nop>
 nnoremap ; :
 nnoremap q; q:
 
-" leader and j/k to move lines in all modes (others)
-nnoremap <silent> <leader>j :m+<CR>==
-nnoremap <silent> <leader>k :m-2<CR>==
-inoremap <silent> <leader>j <Esc>:m+<CR>==gi
-inoremap <silent> <leader>k <Esc>:m-2<CR>==gi
-vnoremap <silent> <leader>j :m'>+<CR>gv=gv
-vnoremap <silent> <leader>k :m-2<CR>gv=gv
-
 " Alt and up/down to move lines in all modes
 nnoremap <silent> [1;3B :m+<CR>==
 nnoremap <silent> [1;3A :m-2<CR>==
@@ -383,6 +375,12 @@ inoremap <silent> [1;3B <Esc>:m+<CR>==gi
 inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
 vnoremap <silent> [1;3B :m'>+<CR>gv=gv
 vnoremap <silent> [1;3A :m-2<CR>gv=gv
+
+" Ctrl, shift and j/k to move lines in normal and visual mode
+nnoremap <silent> <C-J> :m+<CR>==
+nnoremap <silent> <C-K> :m-2<CR>==
+vnoremap <silent> <C-J> :m'>+<CR>gv=gv
+vnoremap <silent> <C-K> :m-2<CR>gv=gv
 
 " ctag mappings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -403,8 +401,8 @@ endfunction
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>
 
-" noremap <silent> o :put =''<CR>
-" noremap <silent> O :put! =''<CR>
+noremap <silent> <C-H> :put =''<CR>
+noremap <silent> <C-L> :put! =''<CR>
 
 " ------ other plugin mappings ------
 
