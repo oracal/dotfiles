@@ -376,12 +376,6 @@ inoremap <silent> [1;3A <Esc>:m-2<CR>==gi
 vnoremap <silent> [1;3B :m'>+<CR>gv=gv
 vnoremap <silent> [1;3A :m-2<CR>gv=gv
 
-" Ctrl, shift and j/k to move lines in normal and visual mode
-nnoremap <silent> <C-J> :m+<CR>==
-nnoremap <silent> <C-K> :m-2<CR>==
-vnoremap <silent> <C-J> :m'>+<CR>gv=gv
-vnoremap <silent> <C-K> :m-2<CR>gv=gv
-
 " ctag mappings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
@@ -400,9 +394,6 @@ endfunction
 
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>
-
-noremap <silent> <C-H> :put =''<CR>
-noremap <silent> <C-L> :put! =''<CR>
 
 " ------ other plugin mappings ------
 
