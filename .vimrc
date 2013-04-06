@@ -127,6 +127,7 @@ let g:syntastic_enable_balloons = 0
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
+let g:slime_no_mappings = 1
 
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
@@ -142,6 +143,16 @@ inoremap <C-space> <Esc>`^
 
 nnoremap <c-@> i
 inoremap <c-@> <Esc>`^
+
+" vim-expand-region
+" Use the global default + the following for ruby
+call expand_region#custom_text_objects('ruby', {
+      \ 'im' :0,
+      \ 'am' :0,
+      \ })
+
+nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
+nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>
 
 " ---- leader mappings ----
 
@@ -176,6 +187,15 @@ map <Leader>vq :VimuxCloseRunner<CR>
 map <Leader>vx :VimuxClosePanes<CR>
 map <Leader>vs :VimuxInterruptRunner<CR>
 map <Leader>vc :VimuxClearRunnerHistory<CR>
+
+" vim-slime
+xmap <leader>m <Plug>SlimeRegionSend
+nmap <leader>m <Plug>SlimeMotionSend
+nmap <leader>mm <Plug>SlimeLineSend
+nmap <leader>mc <Plug>SlimeConfig
+
+"vim-octopress
+autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " ---- function key mappings ----
 
