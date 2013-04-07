@@ -154,6 +154,9 @@ call expand_region#custom_text_objects('ruby', {
 nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
 nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>
 
+"vim-octopress
+autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
+
 " ---- leader mappings ----
 
 " Change mapleader
@@ -193,9 +196,6 @@ xmap <leader>m <Plug>SlimeRegionSend
 nmap <leader>m <Plug>SlimeMotionSend
 nmap <leader>mm <Plug>SlimeLineSend
 nmap <leader>mc <Plug>SlimeConfig
-
-"vim-octopress
-autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " ---- function key mappings ----
 
