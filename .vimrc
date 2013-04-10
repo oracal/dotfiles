@@ -47,6 +47,7 @@ autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 autocmd Filetype jst setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 " Use Vim settings, rather then Vi settings
 " This must be first, because it changes other options as a side effect.
@@ -192,10 +193,13 @@ map <Leader>vs :VimuxInterruptRunner<CR>
 map <Leader>vc :VimuxClearRunnerHistory<CR>
 
 " vim-slime
-xmap <leader>m <Plug>SlimeRegionSend
-nmap <leader>m <Plug>SlimeMotionSend
-nmap <leader>mm <Plug>SlimeLineSend
-nmap <leader>mc <Plug>SlimeConfig
+xmap <leader>a <Plug>SlimeRegionSend
+nmap <leader>a <Plug>SlimeMotionSend
+nmap <leader>aa <Plug>SlimeLineSend
+nmap <leader>ac <Plug>SlimeConfig
+
+" map Make to avoid having to press enter twice and since it is used quite a bit.
+noremap <silent> <leader>m :Make<CR>
 
 " ---- function key mappings ----
 

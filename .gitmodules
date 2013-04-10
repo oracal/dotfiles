@@ -148,3 +148,6 @@
 [submodule ".vim/bundle/vim-visual-star-search"]
 	path = .vim/bundle/vim-visual-star-search
 	url = https://github.com/nelstrom/vim-visual-star-search.git
+[submodule ".vim/bundle/vim-togglelist"]
+	path = .vim/bundle/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git
