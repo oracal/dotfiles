@@ -453,3 +453,9 @@ autocmd BufReadPost *
 
 " disable automatic commenting on new line (not sure why that is a thing)
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" close vim if the only buffer left is nerdtree (taken from https://github.com/scrooloose/nerdtree/issues/21)
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" close vim if the only buffer left is quickfix
+autocmd bufenter * if winnr('$') == 1 && &buftype == 'quickfix' | quit | endif
