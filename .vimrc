@@ -118,10 +118,12 @@ let g:rbpt_colorpairs = [
     \ ]
 
 " Powerline configuration
-set laststatus=2
+set laststatus=2 " Always display the statusline in all windows
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)j
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_theme = 'oracal'
 let g:Powerline_colorscheme = 'oracal'
+set rtp+=~/.shared/powerline/powerline/bindings/vim
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
