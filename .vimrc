@@ -123,7 +123,6 @@ set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusl
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_theme = 'oracal'
 let g:Powerline_colorscheme = 'oracal'
-set rtp+=~/.shared/powerline/powerline/bindings/vim
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
