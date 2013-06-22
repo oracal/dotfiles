@@ -60,6 +60,7 @@ set ignorecase                  "case insensitive search
 set smartcase                   "case sensitive when uc present
 set wildmenu                    "show list instead of just completing
 set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
+set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
 
 " This shows what you are typing as a command.
 set showcmd
@@ -135,7 +136,7 @@ let g:slime_no_mappings = 1
 let g:autotagmaxTagsFileSize = 200*1024*1024
 source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", "snipmate"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 
 " let g:SuperTabDefaultCompletionType = "context"
 
