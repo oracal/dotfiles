@@ -127,6 +127,7 @@ let g:Powerline_colorscheme = 'oracal'
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
