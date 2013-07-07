@@ -165,6 +165,7 @@ autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " Change mapleader
 let mapleader=","
+noremap \ ,
 
 let g:EasyMotion_leader_key = '<leader><leader>'
 
@@ -184,7 +185,7 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 nnoremap <silent> <leader>y :YRShow<CR>
 
 " save file using sudo
-nnoremap <leader>s :w !sudo tee % >/dev/null<CR>
+nnoremap <leader>s :w !sudo tee % > /dev/null<CR>
 
 " vimux
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -203,6 +204,16 @@ nmap <leader>ac <Plug>SlimeConfig
 
 " map Make to avoid having to press enter twice and since it is used quite a bit.
 noremap <silent> <leader>m :Make<CR>
+
+" toggle spell check
+nnoremap <silent> <leader>c :set spell!<CR>
+
+" tabularize plugin common variable declaration and assignment alignment for c++, probably can generalise this to other languages
+" in normal regex: (=|[^\s=]+\s*;|[\w_]+[\s\[\]]*(?==)) consists of 3 patters in an or relationship
+" first pattern (assignment) matches =, second pattern (declaration) matches a word optional white space and a semi-colon
+" third pattern (assignment variable) matches a word and optional square brackets or white space before an = character
+nnoremap <Leader>= :Tabularize /\(=\\|[^[:space:]=]\+\s*;\\|[[:alnum:]_]\+[[:space:]\[\]]*=\@=\)/l1l0l0<CR>
+vnoremap <Leader>= :Tabularize /\(=\\|[^[:space:]=]\+\s*;\\|[[:alnum:]_]\+[[:space:]\[\]]*=\@=\)/l1l0l0<CR>
 
 " ---- function key mappings ----
 
@@ -365,7 +376,9 @@ endfunction
 
 " Up and down are more logical with g..
 nnoremap <silent> k gk
+nnoremap <silent> gk k
 nnoremap <silent> j gj
+nnoremap <silent> gj j
 " nnoremap <silent> <Up> gk
 " nnoremap <silent> <Down> gj
 " inoremap <silent> <Up> <Esc>gka
@@ -391,9 +404,9 @@ inoremap jj <Esc>`^
 inoremap jk <Esc>`^
 inoremap <Esc> <nop>
 
-" ; works like : for commands. Saves typing and eliminates :W style typos due to lazy holding shift.
-nnoremap ; :
-nnoremap q; q:
+" ; works like : for commands. Saves typing and eliminates :w style typos due to lazy holding shift.
+" nnoremap ; :
+" nnoremap q; q:
 
 " Alt and up/down to move lines in all modes
 nnoremap <silent> [1;3B :m+<CR>==
@@ -421,6 +434,10 @@ endfunction
 
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>
+
+" use up and down in the ex command line without leaving home row
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " ------ other plugin mappings ------
 
