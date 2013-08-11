@@ -5,6 +5,10 @@ call pathogen#infect()
 
 " ---- vim settings ----
 
+" Use Vim settings, rather then Vi settings
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
 " color scheme
 set t_Co=256
 syntax on
@@ -14,7 +18,7 @@ filetype plugin indent on
 set background=dark
 colorscheme solarized
 
-set noerrorbells "No error bells
+set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
@@ -48,10 +52,6 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 autocmd Filetype jst setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
-
-" Use Vim settings, rather then Vi settings
-" This must be first, because it changes other options as a side effect.
-set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -128,6 +128,7 @@ let g:Powerline_colorscheme = 'oracal'
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_always_populate_loc_list=1
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
@@ -139,7 +140,7 @@ source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
 let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 
-" let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "context"
 
 " space bind
 nnoremap <C-space> i
@@ -204,6 +205,12 @@ nmap <leader>ac <Plug>SlimeConfig
 
 " map Make to avoid having to press enter twice and since it is used quite a bit.
 noremap <silent> <leader>m :Make<CR>
+" ignore warning messages when running :make > quickfix
+set errorformat^=%-G%f:%l:\ warning:%m
+
+" set filetype of cmake files
+autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 
 " toggle spell check
 nnoremap <silent> <leader>c :set spell!<CR>
@@ -227,8 +234,10 @@ inoremap <silent> <F2> <C-O>:set number!<cr>
 set number
 
 " remove highlighting for search
-nnoremap <F3> :set hlsearch!<CR>
-inoremap <F3> <C-O>:set hlsearch!<CR>
+" nnoremap <F3> :set hlsearch!<CR>
+" inoremap <F3> <C-O>:set hlsearch!<CR>
+nnoremap <silent> <F3> :<C-u>nohlsearch<CR>
+inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
 
 " Paste Toggle
 set pastetoggle=<F6>

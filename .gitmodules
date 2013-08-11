@@ -163,3 +163,12 @@
 [submodule ".vim/bundle/vim-tmux-navigator"]
 	path = .vim/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule ".vim/bundle/Align"]
+	path = .vim/bundle/Align
+	url = https://github.com/vim-scripts/Align.git
+[submodule ".vim/bundle/vim-cmake"]
+	path = .vim/bundle/vim-cmake
+	url = https://github.com/vhdirk/vim-cmake.git
+[submodule ".vim/bundle/powerline"]
+	path = .vim/bundle/powerline
+	url = https://github.com/Lokaltog/powerline.git
