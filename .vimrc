@@ -45,6 +45,7 @@ set expandtab
 set autoindent
 set smarttab
 
+" filetype indent settings
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
@@ -156,8 +157,25 @@ call expand_region#custom_text_objects('ruby', {
       \ 'am' :0,
       \ })
 
+nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
+nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>
+
 " vim-octopress
 autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
+
+" disable delimitmate for vim files
+let delimitMate_excluded_ft = "vim"
+
+" indentline settings
+let g:indentLine_fileType = []
+let g:indentLine_fileTypeExclude = []
+
+" winresizer settings
+let g:winresizer_vert_resize=5
+let g:winresizer_horiz_resize=5
+
+" clever-f settings
+let g:clever_f_not_overwrites_standard_mappings = 1
 
 " ---- leader mappings ----
 
@@ -235,6 +253,10 @@ set number
 " inoremap <F3> <C-O>:set hlsearch!<CR>
 nnoremap <silent> <F3> :<C-u>nohlsearch<CR>
 inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
+
+" winresizer key
+nnoremap <silent> <F4> :WinResizerStartResize<CR>
+inoremap <silent> <F4> <C-O>:WinResizerStartResize<CR>
 
 " Paste Toggle
 set pastetoggle=<F6>
