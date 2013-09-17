@@ -156,10 +156,7 @@ call expand_region#custom_text_objects('ruby', {
       \ 'am' :0,
       \ })
 
-nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
-nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>
-
-"vim-octopress
+" vim-octopress
 autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " ---- leader mappings ----
@@ -203,8 +200,8 @@ nmap <leader>a <Plug>SlimeMotionSend
 nmap <leader>aa <Plug>SlimeLineSend
 nmap <leader>ac <Plug>SlimeConfig
 
-" map Make to avoid having to press enter twice and since it is used quite a bit.
-noremap <silent> <leader>m :Make<CR>
+" map Dispatch to avoid having to press enter twice and since it is used quite a bit.
+noremap <silent> <leader>m :Dispatch<CR>
 " ignore warning messages when running :make > quickfix
 set errorformat^=%-G%f:%l:\ warning:%m
 
@@ -428,6 +425,11 @@ vnoremap <silent> [1;3A :m-2<CR>gv=gv
 " ctag mappings
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" make the tselect list the default when opening tags (too many similar named classes and methods in my projects and
+" ctags does not seem to care too much about namespaces)
+noremap <C-]> g<C-]>
+noremap g<C-]> <C-]>
 
 " after yanking in visual mode I want to be where I was previously (seems quite slow)
 function! YRRunAfterMaps()
