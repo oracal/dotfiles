@@ -54,6 +54,13 @@ autocmd Filetype jade setlocal ts=2 sts=2 sw=2
 autocmd Filetype jst setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
+" cindent options
+
+" no indent after private:, public: and protected:
+set cino+=g0
+" no indent after namespaces
+set cino+=N-s
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -78,11 +85,9 @@ hi SignColumn ctermbg=8 ctermfg=11
 hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
 hi StatusLine ctermbg=0 ctermfg=0
 
-if v:version >= 703
-    "undo settings
-    set undodir=~/.vim/undofiles
-    set undofile
-endif
+"undo settings
+set undodir=~/.vim/undofiles
+set undofile
 
 set scrolloff=5
 
@@ -157,8 +162,8 @@ call expand_region#custom_text_objects('ruby', {
       \ 'am' :0,
       \ })
 
-nmap <silent> ]h :<C-U>execute v:count1 . "GitGutterNextHunk"<CR>
-nmap <silent> [h :<C-U>execute v:count1 . "GitGutterPrevHunk"<CR>
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 " vim-octopress
 autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
@@ -230,13 +235,6 @@ autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 " toggle spell check
 nnoremap <silent> <leader>c :set spell!<CR>
 
-" tabularize plugin common variable declaration and assignment alignment for c++, probably can generalise this to other languages
-" in normal regex: (=|[^\s=]+\s*;|[\w_]+[\s\[\]]*(?==)) consists of 3 patters in an or relationship
-" first pattern (assignment) matches =, second pattern (declaration) matches a word optional white space and a semi-colon
-" third pattern (assignment variable) matches a word and optional square brackets or white space before an = character
-nnoremap <Leader>= :Tabularize /\(=\\|[^[:space:]=]\+\s*;\\|[[:alnum:]_]\+[[:space:]\[\]]*=\@=\)/l1l0l0<CR>
-vnoremap <Leader>= :Tabularize /\(=\\|[^[:space:]=]\+\s*;\\|[[:alnum:]_]\+[[:space:]\[\]]*=\@=\)/l1l0l0<CR>
-
 " ---- function key mappings ----
 
 " rainbow parentheses binding
@@ -249,8 +247,6 @@ inoremap <silent> <F2> <C-O>:set number!<cr>
 set number
 
 " remove highlighting for search
-" nnoremap <F3> :set hlsearch!<CR>
-" inoremap <F3> <C-O>:set hlsearch!<CR>
 nnoremap <silent> <F3> :<C-u>nohlsearch<CR>
 inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
 
@@ -407,20 +403,10 @@ nnoremap <silent> k gk
 nnoremap <silent> gk k
 nnoremap <silent> j gj
 nnoremap <silent> gj j
-" nnoremap <silent> <Up> gk
-" nnoremap <silent> <Down> gj
-" inoremap <silent> <Up> <Esc>gka
-" inoremap <silent> <Down> <Esc>gja
-
-" disble arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+nnoremap <silent> <Up> gk
+nnoremap <silent> <Down> gj
+nnoremap <silent> g<Up> k
+nnoremap <silent> g<Down> j
 
 " key mappings for saving file
 nmap <C-s> :w<CR>
@@ -430,11 +416,6 @@ imap <C-s> <C-O>:w<CR>
 " Remap jj and jk to esc and set esc to nop
 inoremap jj <Esc>`^
 inoremap jk <Esc>`^
-inoremap <Esc> <nop>
-
-" ; works like : for commands. Saves typing and eliminates :w style typos due to lazy holding shift.
-" nnoremap ; :
-" nnoremap q; q:
 
 " Alt and up/down to move lines in all modes
 nnoremap <silent> [1;3B :m+<CR>==
@@ -445,25 +426,12 @@ vnoremap <silent> [1;3B :m'>+<CR>gv=gv
 vnoremap <silent> [1;3A :m-2<CR>gv=gv
 
 " ctag mappings
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " make the tselect list the default when opening tags (too many similar named classes and methods in my projects and
 " ctags does not seem to care too much about namespaces)
 noremap <C-]> g<C-]>
 noremap g<C-]> <C-]>
-
-" after yanking in visual mode I want to be where I was previously (seems quite slow)
-function! YRRunAfterMaps()
-    " vmap y ygv<Esc>
-    " map p gp
-    " map P gP
-endfunction
-
-" after yanking in visual mode I want to be at the end of the selection, not the beginning (much faster but not as good)
-" function! YRRunAfterMaps()
-"    vmap y y'>
-" endfunction
 
 " ctrl - a is my multiplexing prefix
 map <C-a> <nop>

@@ -59,8 +59,8 @@
 	path = .tmux/tmux-powerline
 	url = https://github.com/oracal/tmux-powerline.git
 [submodule ".vim/bundle/vim-speeddating"]
-	path = .vim/bundle/vim-speeddating
-	url = https://github.com/oracal/vim-speeddating.git
+    path = .vim/bundle/vim-speeddating
+    url = https://github.com/tpope/vim-speeddating.git
 [submodule ".vim/bundle/swapit"]
 	path = .vim/bundle/swapit
 	url = https://github.com/mjbrownie/swapit.git
