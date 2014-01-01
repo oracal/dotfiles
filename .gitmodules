@@ -181,9 +181,6 @@
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
-[submodule ".vim/bundle/vim-seek"]
-	path = .vim/bundle/vim-seek
-	url = https://github.com/goldfeld/vim-seek.git
 [submodule ".vim/bundle/clever-f"]
 	path = .vim/bundle/clever-f
 	url = https://github.com/rhysd/clever-f.vim
@@ -226,3 +223,9 @@
 [submodule ".vim/bundle/vim-speeddating"]
 	path = .vim/bundle/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating.git
+[submodule ".vim/bundle/vim-sneak"]
+	path = .vim/bundle/vim-sneak
+	url = https://github.com/justinmk/vim-sneak
+[submodule ".vim/bundle/vim-git"]
+	path = .vim/bundle/vim-git
+	url = https://github.com/tpope/vim-git.git

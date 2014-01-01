@@ -33,3 +33,5 @@ command -v gconftool-2 >/dev/null 2>&1 &&
     gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#00002B2B3636"
     gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#838394949696"
 }
+
+alias open=xdg-open
