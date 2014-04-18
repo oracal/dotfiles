@@ -250,3 +250,12 @@
 [submodule ".vim/bundle/vim-vinegar"]
 	path = .vim/bundle/vim-vinegar
 	url = https://github.com/tpope/vim-vinegar.git
+[submodule ".vim/bundle/vim-bufferline"]
+	path = .vim/bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
+[submodule "/home/oracal/.vim/bundle/tmuxline.vim"]
+	path = /home/oracal/.vim/bundle/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim

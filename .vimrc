@@ -38,12 +38,6 @@ set hlsearch "Highlight search results in file
 
 " indent settings
 set tabstop=2
-" set shiftwidth=2
-" set softtabstop=2
-" set expandtab
-
-" filetype indent settings
-" autocmd Filetype c,cpp,python setlocal ts=4 sts=4 sw=4
 
 " set filetype of cmake files
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
@@ -129,11 +123,16 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" Powerline configuration
+" status line config
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'oracal'
-let g:Powerline_colorscheme = 'oracal'
+let g:airline_powerline_fonts = 1
+let g:bufferline_echo = 0
+let g:tmuxline_preset = {
+      \'a'       : '#S',
+      \'b'       : ['#I:#P'],
+      \'win'     : ['#I:#W'],
+      \'cwin'    : ['#I:#W'],
+      \'y'       : '%H:%M %d-%b-%y'}
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
@@ -185,6 +184,7 @@ let g:winresizer_horiz_resize=5
 " clever-f settings
 let g:clever_f_not_overwrites_standard_mappings = 1
 
+" use vineger/netrw rather than nerdtree for opening folders
 let g:NERDTreeHijackNetrw = 0
 
 " ---- leader mappings ----
