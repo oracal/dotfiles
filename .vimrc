@@ -34,19 +34,20 @@ set nobackup
 set nowb
 set noswapfile
 
-set incsearch "Incremental search
 set hlsearch "Highlight search results in file
 
 " indent settings
 set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set autoindent
-set smarttab
+" set shiftwidth=2
+" set softtabstop=2
+" set expandtab
 
 " filetype indent settings
-autocmd Filetype c,cpp,python setlocal ts=4 sts=4 sw=4
+" autocmd Filetype c,cpp,python setlocal ts=4 sts=4 sw=4
+
+" set filetype of cmake files
+autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 
 " cindent options
 
@@ -60,15 +61,8 @@ set backspace=indent,eol,start
 
 set ignorecase                  "case insensitive search
 set smartcase                   "case sensitive when uc present
-set wildmenu                    "show list instead of just completing
 set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
-
-" This shows what you are typing as a command.
-set showcmd
-
-"store lots of :cmdline history
-set history=1000
 
 set tags+=./tags;/
 
@@ -114,8 +108,6 @@ set ttyfast
 
 " Time out on key codes but not mappings
 set notimeout
-set ttimeout
-set ttimeoutlen=100
 
 " Update syntax highlighting for more lines increased scrolling performance
 syntax sync minlines=256
@@ -128,6 +120,8 @@ let g:matchparen_insert_timeout=5
 " allow the . to execute once for each line of a visual selection
 vnoremap . :normal .<CR>
 
+nnoremap Q <nop>
+
 " ---- plugin settings ----
 
 " rainbow parentheses settings
@@ -136,7 +130,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " Powerline configuration
-set laststatus=2 " Always display the statusline in all windows
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_theme = 'oracal'
@@ -155,8 +148,6 @@ let g:slime_no_mappings = 1
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
 source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
-
-let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
 
 " space bind
 nnoremap <C-space> i
@@ -193,6 +184,8 @@ let g:winresizer_horiz_resize=5
 
 " clever-f settings
 let g:clever_f_not_overwrites_standard_mappings = 1
+
+let g:NERDTreeHijackNetrw = 0
 
 " ---- leader mappings ----
 
@@ -240,10 +233,6 @@ noremap <silent> <leader>m :Dispatch<CR>
 " ignore warning messages when running :make > quickfix
 set errorformat^=%-G%f:%l:\ warning:%m
 
-" set filetype of cmake files
-autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
-autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
-
 " toggle spell check
 nnoremap <silent> <leader>c :set spell!<CR>
 
@@ -261,10 +250,6 @@ set number
 " remove highlighting for search
 nnoremap <silent> <F3> :<C-u>nohlsearch<CR>
 inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
-
-" winresizer key
-nnoremap <silent> <F4> :WinResizerStartResize<CR>
-inoremap <silent> <F4> <C-O>:WinResizerStartResize<CR>
 
 " Paste Toggle
 set pastetoggle=<F6>
@@ -308,7 +293,7 @@ xnoremap <silent> g<Down> j
 " key mappings for saving file
 nnoremap <C-s> :w<CR>
 
-" Remap jj and jk to esc and set esc to nop
+" Remap jj and jk to esc
 inoremap jj <Esc>`^
 inoremap jk <Esc>`^
 
@@ -326,6 +311,13 @@ noremap <C-a> <nop>
 " use up and down in the ex command line without leaving home row
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" yanking and pasting now leave the cursor at the end of the selection
+function! YRRunAfterMaps()
+  vnoremap <silent> y y`]
+  vnoremap <silent> p p`]
+  nnoremap <silent> p p`]
+endfunction
 
 " ------ other plugin mappings ------
 
