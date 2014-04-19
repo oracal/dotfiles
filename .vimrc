@@ -125,8 +125,8 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " status line config
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'zenburn'
 let g:bufferline_echo = 0
 let g:tmuxline_preset = {
       \'a'       : '#S',
