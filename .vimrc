@@ -125,6 +125,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " status line config
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:bufferline_echo = 0
 let g:tmuxline_preset = {
@@ -180,9 +181,6 @@ let g:indentLine_fileTypeExclude = []
 " winresizer settings
 let g:winresizer_vert_resize=5
 let g:winresizer_horiz_resize=5
-
-" clever-f settings
-let g:clever_f_not_overwrites_standard_mappings = 1
 
 " use vineger/netrw rather than nerdtree for opening folders
 let g:NERDTreeHijackNetrw = 0

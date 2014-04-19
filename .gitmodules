@@ -52,12 +52,6 @@
 [submodule ".vim/external/craigemery-dotFiles"]
 	path = .vim/external/craigemery-dotFiles
 	url = https://github.com/craigemery/dotFiles.git
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url = https://github.com/oracal/vim-powerline.git
-[submodule ".tmux/tmux-powerline"]
-	path = .tmux/tmux-powerline
-	url = https://github.com/oracal/tmux-powerline.git
 [submodule ".vim/bundle/swapit"]
 	path = .vim/bundle/swapit
 	url = https://github.com/mjbrownie/swapit.git
@@ -178,9 +172,6 @@
 [submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
-[submodule ".vim/bundle/clever-f"]
-	path = .vim/bundle/clever-f
-	url = https://github.com/rhysd/clever-f.vim
 [submodule ".vim/bundle/vim-scala"]
 	path = .vim/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala.git
@@ -256,6 +247,6 @@
 [submodule ".vim/bundle/vim-airline"]
 	path = .vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
-[submodule "/home/oracal/.vim/bundle/tmuxline.vim"]
-	path = /home/oracal/.vim/bundle/tmuxline.vim
+[submodule ".vim/bundle/tmuxline.vim"]
+	path = .vim/bundle/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim
