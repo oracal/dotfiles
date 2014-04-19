@@ -13,9 +13,6 @@ export TERM='xterm-256color'
 # setting to help tmux-powerline work correctly
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
-# set bash to vi mode
-set -o vi
-
 # turn caps lock into an escape key, who the hell uses caps lock anyway?
 if [ $DISPLAY ]
 then
@@ -33,3 +30,5 @@ command -v gconftool-2 >/dev/null 2>&1 &&
     gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#00002B2B3636"
     gconftool-2 --set "/apps/gnome-terminal/profiles/Default/foreground_color" --type string "#838394949696"
 }
+
+alias open=xdg-open

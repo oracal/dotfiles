@@ -34,25 +34,14 @@ set nobackup
 set nowb
 set noswapfile
 
-set incsearch "Incremental search
 set hlsearch "Highlight search results in file
 
 " indent settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autoindent
-set smarttab
+set tabstop=2
 
-" filetype indent settings
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype eruby setlocal ts=2 sts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype jade setlocal ts=2 sts=2 sw=2
-autocmd Filetype jst setlocal ts=2 sts=2 sw=2
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
+" set filetype of cmake files
+autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
 
 " cindent options
 
@@ -66,15 +55,8 @@ set backspace=indent,eol,start
 
 set ignorecase                  "case insensitive search
 set smartcase                   "case sensitive when uc present
-set wildmenu                    "show list instead of just completing
 set wildmode=list:longest,full  "command <Tab> completion, list matches, then longest common part, then all.
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
-
-" This shows what you are typing as a command.
-set showcmd
-
-"store lots of :cmdline history
-set history=1000
 
 set tags+=./tags;/
 
@@ -97,6 +79,43 @@ nnoremap L L5j
 vnoremap H H5k
 vnoremap L L5j
 
+" delete comment characters when joining commented lines with J
+set formatoptions+=j
+
+" Use only 1 space after "." when joining lines instead of 2
+set nojoinspaces
+
+" Don't reset cursor to start of line when moving around
+set nostartofline
+
+" highlight current line
+set cursorline
+
+" Set command line height (default)
+set cmdheight=1
+
+" expand %% to current directory
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+
+" Optimize for fast terminal connections
+set ttyfast
+
+" Time out on key codes but not mappings
+set notimeout
+
+" Update syntax highlighting for more lines increased scrolling performance
+syntax sync minlines=256
+
+" Don't syntax highlight long lines
+set synmaxcol=256
+
+let g:matchparen_insert_timeout=5
+
+" allow the . to execute once for each line of a visual selection
+vnoremap . :normal .<CR>
+
+nnoremap Q <nop>
+
 " ---- plugin settings ----
 
 " rainbow parentheses settings
@@ -104,37 +123,22 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" rainbow parentheses colors
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-" Powerline configuration
-set laststatus=2 " Always display the statusline in all windows
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)j
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme = 'oracal'
-let g:Powerline_colorscheme = 'oracal'
+" status line config
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:airline_powerline_fonts = 1
+let g:bufferline_echo = 0
+let g:tmuxline_preset = {
+      \'a'       : '#S',
+      \'b'       : ['#I:#P'],
+      \'win'     : ['#I:#W'],
+      \'cwin'    : ['#I:#W'],
+      \'y'       : '%H:%M %d-%b-%y'}
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
@@ -143,10 +147,6 @@ let g:slime_no_mappings = 1
 " AutoTags
 let g:autotagmaxTagsFileSize = 200*1024*1024
 source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
-
-let g:UltiSnipsSnippetDirectories = ["UltiSnips"]
-
-let g:SuperTabDefaultCompletionType = "context"
 
 " space bind
 nnoremap <C-space> i
@@ -170,6 +170,8 @@ autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " disable delimitmate for vim files
 let delimitMate_excluded_ft = "vim"
+" move closing bracket one line down when <cr>
+let delimitMate_expand_cr = 1
 
 " indentline settings
 let g:indentLine_fileType = []
@@ -181,6 +183,9 @@ let g:winresizer_horiz_resize=5
 
 " clever-f settings
 let g:clever_f_not_overwrites_standard_mappings = 1
+
+" use vineger/netrw rather than nerdtree for opening folders
+let g:NERDTreeHijackNetrw = 0
 
 " ---- leader mappings ----
 
@@ -228,10 +233,6 @@ noremap <silent> <leader>m :Dispatch<CR>
 " ignore warning messages when running :make > quickfix
 set errorformat^=%-G%f:%l:\ warning:%m
 
-" set filetype of cmake files
-autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
-autocmd BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
-
 " toggle spell check
 nnoremap <silent> <leader>c :set spell!<CR>
 
@@ -250,10 +251,6 @@ set number
 nnoremap <silent> <F3> :<C-u>nohlsearch<CR>
 inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
 
-" winresizer key
-nnoremap <silent> <F4> :WinResizerStartResize<CR>
-inoremap <silent> <F4> <C-O>:WinResizerStartResize<CR>
-
 " Paste Toggle
 set pastetoggle=<F6>
 
@@ -271,47 +268,6 @@ function! ToggleMouse()
     endif
 endfunction
 
-" ---- window mappings ----
-
-" Easier moving in windows
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-H> <C-W>h
-nnoremap <C-Up> <C-W>k
-nnoremap <C-Down> <C-W>j
-nnoremap <C-Left> <C-W>h
-nnoremap <C-Right> <C-W>l
-
-" Deal with putty
-nnoremap [A <C-W>k
-nnoremap [B <C-W>j
-nnoremap [D <C-W>h
-nnoremap [C <C-W>l
-inoremap [A <C-O><C-W>k
-inoremap [B <C-O><C-W>j
-inoremap [D <C-O><C-W>h
-inoremap [C <C-O><C-W>l
-
-" Deal with putty and tmux
-nnoremap [1;5A <C-W>k
-nnoremap [1;5B <C-W>j
-nnoremap [1;5D <C-W>h
-nnoremap [1;5C <C-W>l
-inoremap [1;5A <C-O><C-W>k
-inoremap [1;5B <C-O><C-W>j
-inoremap [1;5D <C-O><C-W>h
-inoremap [1;5C <C-O><C-W>l
-
-inoremap <C-J> <C-O><C-W>j
-inoremap <C-K> <C-O><C-W>k
-inoremap <C-L> <C-O><C-W>l
-inoremap <C-H> <C-O><C-W>h
-inoremap <C-Up> <C-O><C-W>k
-inoremap <C-Down> <C-O><C-W>j
-inoremap <C-Left> <C-O><C-W>h
-inoremap <C-Right> <C-O><C-W>l
-
 " ---- other mappings ----
 
 " Up and down are more logical with g..
@@ -324,17 +280,25 @@ nnoremap <silent> <Down> gj
 nnoremap <silent> g<Up> k
 nnoremap <silent> g<Down> j
 
-" key mappings for saving file
-nmap <C-s> :w<CR>
-vmap <C-s> <C-C>:w<CR>
-imap <C-s> <C-O>:w<CR>
+" same but in visual mode
+xnoremap <silent> k gk
+xnoremap <silent> gk k
+xnoremap <silent> j gj
+xnoremap <silent> gj j
+xnoremap <silent> <Up> gk
+xnoremap <silent> <Down> gj
+xnoremap <silent> g<Up> k
+xnoremap <silent> g<Down> j
 
-" Remap jj and jk to esc and set esc to nop
+" key mappings for saving file
+nnoremap <C-s> :w<CR>
+
+" Remap jj and jk to esc
 inoremap jj <Esc>`^
 inoremap jk <Esc>`^
 
 " ctag mappings
-map <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+noremap <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " make the tselect list the default when opening tags (too many similar named classes and methods in my projects and
 " ctags does not seem to care too much about namespaces)
@@ -342,11 +306,18 @@ noremap <C-]> g<C-]>
 noremap g<C-]> <C-]>
 
 " ctrl - a is my multiplexing prefix
-map <C-a> <nop>
+noremap <C-a> <nop>
 
 " use up and down in the ex command line without leaving home row
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+
+" yanking and pasting now leave the cursor at the end of the selection
+function! YRRunAfterMaps()
+  vnoremap <silent> y y`]
+  vnoremap <silent> p p`]
+  nnoremap <silent> p p`]
+endfunction
 
 " ------ other plugin mappings ------
 
@@ -368,17 +339,14 @@ vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 
 " ---- auto commands ----
 
-" " Automatically cd into the directory that the file is in
+" Automatically cd into the directory that the file is in
 autocmd BufEnter * silent! lcd %:p:h
 
 " Remove any trailing whitespace that is in the file
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Return to last edit position when opening files (You want this!)
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \ exe "normal! g`\"" |
-    \ endif
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " disable automatic commenting on new line (not sure why that is a thing)
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
