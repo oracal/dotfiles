@@ -241,3 +241,6 @@
 [submodule ".vim/bundle/tmuxline.vim"]
 	path = .vim/bundle/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim
+[submodule ".vim/bundle/vim-hardtime"]
+	path = .vim/bundle/vim-hardtime
+	url = https://github.com/takac/vim-hardtime.git

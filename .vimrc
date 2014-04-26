@@ -124,6 +124,8 @@ nnoremap Q <nop>
 
 " ---- plugin settings ----
 
+" let g:hardtime_default_on = 1
+
 " rainbow parentheses settings
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
@@ -184,20 +186,14 @@ let delimitMate_expand_cr = 1
 let g:indentLine_fileType = []
 let g:indentLine_fileTypeExclude = []
 
-" winresizer settings
-let g:winresizer_vert_resize=5
-let g:winresizer_horiz_resize=5
-
 " use vineger/netrw rather than nerdtree for opening folders
 let g:NERDTreeHijackNetrw = 0
 
 " ---- leader mappings ----
 
 " Change mapleader
-let mapleader=","
+let mapleader = ","
 noremap \ ,
-
-let g:EasyMotion_leader_key = '<leader><leader>'
 
 " nerd tree binding
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -257,20 +253,6 @@ inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
 
 " Paste Toggle
 set pastetoggle=<F6>
-
-" Enable mouse support in console and set toggle button
-set mouse=
-nnoremap <F12> :call ToggleMouse()<CR>
-inoremap <F12> <C-O>:call ToggleMouse()<CR>
-function! ToggleMouse()
-    if &mouse == 'a'
-        set mouse=
-        echo "Mouse usage disabled"
-    else
-        set mouse=a
-        echo "Mouse usage enabled"
-    endif
-endfunction
 
 " ---- other mappings ----
 
@@ -348,6 +330,7 @@ xmap f <Plug>Sneak_f
 xmap F <Plug>Sneak_F
 omap f <Plug>Sneak_f
 omap F <Plug>Sneak_F
+
 "replace 't' with exclusive 1-char Sneak
 nmap t <Plug>Sneak_t
 nmap T <Plug>Sneak_T
