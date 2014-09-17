@@ -43,7 +43,7 @@ set softtabstop=2
 set expandtab
 
 " filetype indent settings
-autocmd Filetype c,cpp,python setlocal ts=4 sts=4 sw=4
+autocmd Filetype c,cpp,python,rust setlocal ts=4 sts=4 sw=4
 
 " set filetype of cmake files
 autocmd BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
@@ -145,7 +145,7 @@ let g:tmuxline_preset = {
 
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['rust'] }
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 
@@ -178,7 +178,7 @@ nmap [h <Plug>GitGutterPrevHunk
 autocmd BufNewFile,BufRead *.markdown,*.textile set filetype=octopress
 
 " disable delimitmate for vim files
-let delimitMate_excluded_ft = "vim"
+let delimitMate_excluded_ft = "vim,rust"
 " move closing bracket one line down when <cr>
 let delimitMate_expand_cr = 1
 
@@ -298,11 +298,36 @@ noremap <C-a> <nop>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-" yanking and pasting now leave the cursor at the end of the selection
+" key mappings that need to occur after yankrings
 function! YRRunAfterMaps()
+
+  " yanking and pasting now leave the cursor at the end of the selection
   vnoremap <silent> y y`]
   vnoremap <silent> p p`]
   nnoremap <silent> p p`]
+
+  " this pisses me off so much D is d$ C is c$ A is $a but Y is yy. WHY?
+  noremap Y y$
+
+  " Make cw behave like dw and yw
+  onoremap <silent> w :execute 'normal! '.v:count1.'w'<CR>
+
+  "replace 'f' with inclusive 1-char Sneak
+  nmap f <Plug>Sneak_f
+  nmap F <Plug>Sneak_F
+  xmap f <Plug>Sneak_f
+  xmap F <Plug>Sneak_F
+  omap f <Plug>Sneak_f
+  omap F <Plug>Sneak_F
+
+  "replace 't' with exclusive 1-char Sneak
+  nmap t <Plug>Sneak_t
+  nmap T <Plug>Sneak_T
+  xmap t <Plug>Sneak_t
+  xmap T <Plug>Sneak_T
+  omap t <Plug>Sneak_t
+  omap T <Plug>Sneak_T
+
 endfunction
 
 " ------ other plugin mappings ------
@@ -322,22 +347,6 @@ nmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
 nmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 vmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
 vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
-
-"replace 'f' with inclusive 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-
-"replace 't' with exclusive 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
 
 " ---- auto commands ----
 

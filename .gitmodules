@@ -244,3 +244,6 @@
 [submodule ".vim/bundle/vim-hardtime"]
 	path = .vim/bundle/vim-hardtime
 	url = https://github.com/takac/vim-hardtime.git
+[submodule ".vim/bundle/selective-undo.vim"]
+	path = .vim/bundle/selective-undo.vim
+	url = https://github.com/jaxbot/selective-undo.vim.git
