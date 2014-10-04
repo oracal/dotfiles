@@ -1,7 +1,92 @@
 " ---- plugin management ----
 
-source ~/.vim/bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+source ~/.vim/bundle/vim-plug/plug.vim
+call plug#begin('~/.vim/bundle')
+
+Plug 'junegunn/vim-plug'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tomtom/tcomment_vim'
+Plug 'ervandew/supertab'
+Plug 'kien/ctrlp.vim'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'jpalardy/vim-slime'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-abolish'
+Plug 'bkad/CamelCaseMotion'
+Plug 'mjbrownie/swapit'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tmhedberg/matchit'
+Plug 'voithos/vim-python-matchit'
+Plug 'vim-scripts/a.vim'
+Plug 'benmills/vimux'
+Plug 'uarun/vim-protobuf'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-bundler'
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'digitaltoad/vim-jade'
+Plug 'briancollins/vim-jst'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'tangledhelix/vim-octopress'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-tbone'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-rake'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'milkypostman/vim-togglelist'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'gregsexton/gitv'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-scripts/Align'
+Plug 'vhdirk/vim-cmake'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'AndrewRadev/switch.vim'
+Plug 'int3/vim-extradite'
+Plug 'sheerun/vim-polyglot'
+Plug 'derekwyatt/vim-scala'
+Plug 'Yggdroot/indentLine'
+Plug 'othree/html5.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-characterize'
+Plug 'Raimondi/delimitMate'
+Plug 'kana/vim-textobj-indent'
+Plug 'matze/vim-move'
+Plug 'tpope/vim-speeddating'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-git'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'wellle/tmux-complete.vim'
+Plug 'tpope/vim-rsi'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'kana/vim-altr'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-vinegar'
+Plug 'bling/vim-bufferline'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'takac/vim-hardtime'
+Plug 'jaxbot/selective-undo.vim'
+
+call plug#end()
 
 " ---- vim settings ----
 
@@ -152,10 +237,6 @@ let g:syntastic_check_on_open=1
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
 let g:slime_no_mappings = 1
-
-" AutoTags
-let g:autotagmaxTagsFileSize = 200*1024*1024
-source ~/.vim/external/craigemery-dotFiles/vim/plugin/autotag.vim
 
 " space bind
 nnoremap <C-space> i
