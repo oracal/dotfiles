@@ -1,107 +1,135 @@
-" ---- plugin management ----
-
-source ~/.vim/bundle/vim-plug/plug.vim
-call plug#begin('~/.vim/bundle')
-
-Plug 'junegunn/vim-plug'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tomtom/tcomment_vim'
-Plug 'ervandew/supertab'
-Plug 'kien/ctrlp.vim'
-Plug 'sjl/gundo.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'jpalardy/vim-slime'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-abolish'
-Plug 'bkad/CamelCaseMotion'
-Plug 'mjbrownie/swapit'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'tmhedberg/matchit'
-Plug 'voithos/vim-python-matchit'
-Plug 'vim-scripts/a.vim'
-Plug 'benmills/vimux'
-Plug 'uarun/vim-protobuf'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-bundler'
-Plug 'kana/vim-textobj-user'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'vim-ruby/vim-ruby'
-Plug 'pangloss/vim-javascript'
-Plug 'digitaltoad/vim-jade'
-Plug 'briancollins/vim-jst'
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'tpope/vim-markdown'
-Plug 'godlygeek/tabular'
-Plug 'tangledhelix/vim-octopress'
-Plug 'terryma/vim-expand-region'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-tbone'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-rake'
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'milkypostman/vim-togglelist'
-Plug 'mileszs/ack.vim'
-Plug 'rking/ag.vim'
-Plug 'gregsexton/gitv'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'vim-scripts/Align'
-Plug 'vhdirk/vim-cmake'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'AndrewRadev/switch.vim'
-Plug 'int3/vim-extradite'
-Plug 'sheerun/vim-polyglot'
-Plug 'derekwyatt/vim-scala'
-Plug 'Yggdroot/indentLine'
-Plug 'othree/html5.vim'
-Plug 'kshenoy/vim-signature'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-characterize'
-Plug 'Raimondi/delimitMate'
-Plug 'kana/vim-textobj-indent'
-Plug 'matze/vim-move'
-Plug 'tpope/vim-speeddating'
-Plug 'justinmk/vim-sneak'
-Plug 'tpope/vim-git'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'wellle/tmux-complete.vim'
-Plug 'tpope/vim-rsi'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'kana/vim-altr'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-vinegar'
-Plug 'bling/vim-bufferline'
-Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'takac/vim-hardtime'
-Plug 'jaxbot/selective-undo.vim'
-
-call plug#end()
-
-" ---- vim settings ----
-
 " Use Vim settings, rather then Vi settings
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" color scheme
-set t_Co=256
+" plugin management
+
+source ~/.vim/bundle/vim-plug/plug.vim
+call plug#begin('~/.vim/bundle')
+
+" language
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-markdown'
+Plug 'mattn/emmet-vim'
+Plug 'othree/html5.vim'
+Plug 'digitaltoad/vim-jade'
+Plug 'tpope/vim-bundler'
+Plug 'derekwyatt/vim-scala'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-git'
+Plug 'sheerun/vim-polyglot'
+Plug 'tangledhelix/vim-octopress'
+Plug 'briancollins/vim-jst'
+Plug 'vhdirk/vim-cmake'
+Plug 'uarun/vim-protobuf'
+
+" completion
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-endwise'
+Plug 'Raimondi/delimitMate'
+
+" code display
+Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim'}
+Plug 'chriskempson/base16-vim'
+Plug 'reedes/vim-thematic'
+Plug 'flazz/vim-colorschemes'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Yggdroot/indentLine'
+
+" git integrations
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'gregsexton/gitv'
+Plug 'int3/vim-extradite'
+
+" tmux integrations
+Plug 'jpalardy/vim-slime'
+Plug 'tpope/vim-tbone'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'wellle/tmux-complete.vim'
+
+" other integrations
+Plug 'scrooloose/syntastic'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'tpope/vim-eunuch'
+
+" interface
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'bling/vim-bufferline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'majutsushi/tagbar'
+Plug 'sjl/gundo.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-vinegar'
+
+" text-object
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-indent'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'bkad/CamelCaseMotion'
+
+" movement
+Plug 'Lokaltog/vim-easymotion'
+Plug 'justinmk/vim-sneak'
+Plug 'tmhedberg/matchit'
+Plug 'voithos/vim-python-matchit'
+
+" manipulation
+Plug 'godlygeek/tabular'
+Plug 'vim-scripts/Align'
+Plug 'tomtom/tcomment_vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'mjbrownie/swapit'
+Plug 'AndrewRadev/switch.vim'
+Plug 'milkypostman/vim-togglelist'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'tpope/vim-speeddating'
+
+" commands
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'tpope/vim-abolish'
+Plug 'terryma/vim-expand-region'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'tpope/vim-rsi'
+Plug 'vim-scripts/a.vim'
+Plug 'derekwyatt/vim-fswitch'
+Plug 'jaxbot/selective-undo.vim'
+
+" other
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/vim-plug'
+Plug 'tpope/vim-characterize'
+Plug 'kana/vim-altr'
+
+call plug#end()
+
+" vim settings
+
+" colorscheme
 syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
-set background=dark
-colorscheme solarized
+colorscheme Tomorrow-Night
+
+" custom changes to colorscheme
+set fillchars+=vert:\│
+hi VertSplit ctermfg=239 ctermbg=235 guifg=#585858 guibg=#1d1f21
+hi Folded ctermfg=245 ctermbg=236 guifg=#969896 guibg=#3a3a3a
 
 set noerrorbells
 set novisualbell
@@ -151,13 +179,6 @@ set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
 
 set tags+=./tags;/
 
-" edit solarized slightly for less harsh colors
-set fillchars+=vert:\│
-hi VertSplit ctermbg=8 ctermfg=11
-hi SignColumn ctermbg=8 ctermfg=11
-hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
-hi StatusLine ctermbg=0 ctermfg=0
-
 "undo settings
 set undodir=~/.vim/undofiles
 set undofile
@@ -200,16 +221,20 @@ syntax sync minlines=256
 " Don't syntax highlight long lines
 set synmaxcol=256
 
-let g:matchparen_insert_timeout=5
+let g:matchparen_insert_timeout = 5
 
 " allow the . to execute once for each line of a visual selection
 vnoremap . :normal .<CR>
 
 nnoremap Q <nop>
 
-" ---- plugin settings ----
+" gvim settings
+set guioptions-=m " menu bar
+set guioptions-=T " toolbar
+set guioptions-=r " scrollbar
+set guioptions-=L " other scrollbar
 
-" let g:hardtime_default_on = 1
+" plugin settings
 
 " rainbow parentheses settings
 au Syntax * RainbowParenthesesLoadRound
@@ -231,8 +256,8 @@ let g:tmuxline_preset = {
 " Syntastic configuration
 let g:syntastic_enable_balloons = 0
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['rust'] }
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "~/.slime_paste"
@@ -270,7 +295,7 @@ let g:indentLine_fileTypeExclude = []
 " use vineger/netrw rather than nerdtree for opening folders
 let g:NERDTreeHijackNetrw = 0
 
-" ---- leader mappings ----
+" leader mappings
 
 " Change mapleader
 let mapleader = ","
@@ -290,9 +315,6 @@ nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " Yankring mapping
 nnoremap <silent> <leader>y :YRShow<CR>
-
-" save file using sudo
-nnoremap <leader>s :w !sudo tee % > /dev/null<CR>
 
 " vimux
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -317,7 +339,7 @@ set errorformat^=%-G%f:%l:\ warning:%m
 " toggle spell check
 nnoremap <silent> <leader>c :set spell!<CR>
 
-" ---- function key mappings ----
+" function key mappings
 
 " rainbow parentheses binding
 inoremap <silent> <F1> <C-O>:RainbowParenthesesToggle<cr>
@@ -335,7 +357,7 @@ inoremap <silent> <F3> <C-O>:<C-u>nohlsearch<CR>
 " Paste Toggle
 set pastetoggle=<F6>
 
-" ---- other mappings ----
+" other mappings
 
 " Up and down are more logical with g..
 nnoremap <silent> k gk
@@ -381,7 +403,6 @@ cnoremap <C-n> <Down>
 
 " key mappings that need to occur after yankrings
 function! YRRunAfterMaps()
-
   " yanking and pasting now leave the cursor at the end of the selection
   vnoremap <silent> y y`]
   vnoremap <silent> p p`]
@@ -408,10 +429,9 @@ function! YRRunAfterMaps()
   xmap T <Plug>Sneak_T
   omap t <Plug>Sneak_t
   omap T <Plug>Sneak_T
-
 endfunction
 
-" ------ other plugin mappings ------
+" other plugin mappings
 
 " mappings for swapit and speeddating
 let g:speeddating_no_mappings = 1
@@ -429,7 +449,7 @@ nmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 vmap <Plug>SwapItFallbackIncrement <Plug>SpeedDatingUp
 vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 
-" ---- auto commands ----
+" auto commands
 
 " Automatically cd into the directory that the file is in
 autocmd BufEnter * silent! lcd %:p:h
