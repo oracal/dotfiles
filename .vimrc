@@ -33,9 +33,7 @@ Plug 'Raimondi/delimitMate'
 
 " code display
 Plug 'altercation/vim-colors-solarized'
-Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim'}
-Plug 'chriskempson/base16-vim'
-Plug 'reedes/vim-thematic'
+Plug 'w0ng/vim-hybrid'
 Plug 'flazz/vim-colorschemes'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'Yggdroot/indentLine'
@@ -65,7 +63,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
-Plug 'bling/vim-bufferline'
+Plug 'jeetsukumaran/vim-buffergator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'sjl/gundo.vim'
@@ -95,6 +93,7 @@ Plug 'AndrewRadev/switch.vim'
 Plug 'milkypostman/vim-togglelist'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'tpope/vim-speeddating'
+Plug 'sk1418/Join'
 
 " commands
 Plug 'tpope/vim-repeat'
@@ -114,6 +113,7 @@ Plug 'tpope/vim-sensible'
 Plug 'junegunn/vim-plug'
 Plug 'tpope/vim-characterize'
 Plug 'kana/vim-altr'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
@@ -124,12 +124,20 @@ syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
-colorscheme Tomorrow-Night
+set fillchars+=vert:\|
 
-" custom changes to colorscheme
-set fillchars+=vert:\│
-hi VertSplit ctermfg=239 ctermbg=235 guifg=#585858 guibg=#1d1f21
-hi Folded ctermfg=245 ctermbg=236 guifg=#969896 guibg=#3a3a3a
+" hybrid theme
+colorscheme hybrid
+let g:indentLine_color_term = 237
+let g:indentLine_color_gui = '#373b41'
+
+" " solarized theme
+" colorscheme solarized
+" set background=dark
+" hi VertSplit ctermbg=8 ctermfg=11
+" hi SignColumn ctermbg=8 ctermfg=11
+" hi StatusLineNC ctermbg=0 ctermfg=0 cterm=NONE
+" hi StatusLine ctermbg=0 ctermfg=0
 
 set noerrorbells
 set novisualbell
@@ -192,7 +200,7 @@ vnoremap H H5k
 vnoremap L L5j
 
 " delete comment characters when joining commented lines with J
-set formatoptions+=j
+silent! set formatoptions+=j
 
 " Use only 1 space after "." when joining lines instead of 2
 set nojoinspaces
@@ -233,6 +241,7 @@ set guioptions-=m " menu bar
 set guioptions-=T " toolbar
 set guioptions-=r " scrollbar
 set guioptions-=L " other scrollbar
+set guifont=Literation\ Mono\ Powerline
 
 " plugin settings
 
@@ -241,11 +250,14 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+" buffergator settings
+let g:buffergator_suppress_keymaps = 1
+
 " status line config
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'zenburn'
-let g:bufferline_echo = 0
+let g:airline#extensions#tabline#enabled = 1
 let g:tmuxline_preset = {
       \'a'       : '#S',
       \'b'       : ['#I:#P'],
@@ -300,6 +312,9 @@ let g:NERDTreeHijackNetrw = 0
 " Change mapleader
 let mapleader = ","
 noremap \ ,
+
+" current syntax group under cursor
+nnoremap <leader>sg :echo synIDattr(synID(line("."),col("."),1),"name")<CR>
 
 " nerd tree binding
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
@@ -453,9 +468,6 @@ vmap <Plug>SwapItFallbackDecrement <Plug>SpeedDatingDown
 
 " Automatically cd into the directory that the file is in
 autocmd BufEnter * silent! lcd %:p:h
-
-" Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
